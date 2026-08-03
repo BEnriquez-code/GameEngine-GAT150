@@ -1,0 +1,223 @@
+#include "SpaceGame.h"
+#include "Engine.h"
+#include "Player.h"
+#include "Enemy.h"
+#include "Assets.h"
+
+#include <algorithm>
+#include <vector>
+
+using namespace nu;
+
+bool SpaceGame::Initialize() {
+	Game::Initialize();
+	m_scene = new Scene();
+	m_scene->SetGame(this);
+
+	m_titleFont = new Font();
+	m_titleFont->Load("Fonts/Arcade.ttf", 64);
+
+	m_titleText = new Text(m_titleFont);
+
+	m_gameFont = new Font();
+	m_gameFont->Load("Fonts/Arcade.ttf", 32);
+
+	m_scoreText = new Text(m_gameFont);
+	m_livesText = new Text(m_gameFont);
+
+	m_gameOverFont = new Font();
+	m_gameOverFont->Load("Fonts/Arcade.ttf", 64);
+
+	m_gameOverText = new Text(m_gameOverFont);
+
+	m_playFont = new Font();
+	m_playFont->Load("Fonts/Arcade.ttf", 32);
+
+	m_playText = new Text(m_gameOverFont);
+	m_playText->Create(Engine::Get().GetRenderer(), "Press SPACE to play", Color{ 1.0f, 1.0f, 1.0f });
+
+
+	return true;
+}
+
+
+void SpaceGame::Update(float dt, const std::vector<nu::Vector2>& mousePoints) {
+	switch (m_gameState){
+		case GameState::Title:
+			if (Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_SPACE)) {
+				m_gameState = GameState::StartGame;
+			}
+			break;
+		case GameState::StartGame:
+			m_score = 0;
+			m_lives = 5;
+			m_spawnTime = 5.0f;
+			m_gameState = GameState::StartLevel;
+			break;
+		case GameState::StartLevel:
+			m_scene->RemoveAllActors();
+			SpawnPlayer();
+			m_gameState = GameState::Game;
+
+			break;
+		case GameState::Game:
+			if (m_killstreak > 0) {
+				m_killstreakTimer += dt;
+				if (m_killstreakTimer > m_killstreakWindow) {
+					m_killstreak = 0;
+				} 
+			}
+
+			m_spawnTimer -= dt;
+			if (m_spawnTimer <= 0.0f) {
+				m_spawnTimer = m_spawnTime;
+				SpawnEnemy();
+			}
+
+			if (m_scene->GetActorByName<Player>("Player") == nullptr) {
+				OnPlayerDead();
+			}
+
+
+			CheckLineCollisions(mousePoints);
+			break;
+		case GameState::GameOver:
+			break;
+
+	default:
+		break;
+	}
+
+	m_scene->Update(dt);
+}
+
+void SpaceGame::Update(float dt)
+{
+}
+
+void SpaceGame::Draw(Renderer& renderer) {
+	m_scene->Draw(renderer);
+
+	switch (m_gameState) {
+
+	case SpaceGame::GameState::Title:
+		m_titleText->Create(Engine::Get().GetRenderer(), "Game Engine", Color{ 1.0f, 1.0f, 1.0f });
+		m_titleText->Draw(renderer, 400, 400);
+		break;
+	case SpaceGame::GameState::StartGame:
+		break;
+	case SpaceGame::GameState::StartLevel:
+		break;
+	case SpaceGame::GameState::Game:
+		m_scoreText->Create(renderer, "Score: " + std::to_string(m_score), { 1.0f, 1.0f, 1.0f });
+		m_scoreText->Draw(renderer, 30, 30);
+
+		m_livesText->Create(renderer, "Lives: " + std::to_string(m_lives), { 1.0f, 1.0f, 1.0f });
+		m_livesText->Draw(renderer, 1790, 30);
+		break;
+	case SpaceGame::GameState::GameOver:
+		m_gameOverText->Create(Engine::Get().GetRenderer(), "Game Over", Color{ 1.0f, 1.0f, 1.0f });
+		m_gameOverText->Draw(renderer, 400, 400);
+
+		m_playText->Draw(renderer, 400, 450);
+		break;
+	default:
+		break;
+	}
+}
+
+float SpaceGame::PointToLineSegDistance(const nu::Vector2& A, const nu::Vector2& B, const nu::Vector2& C) {
+	Vector2 AB = B - A;
+	Vector2 AC = C - A;
+
+	float lengthSq = AB.x * AB.x + AB.y * AB.y;
+	if (lengthSq == 0.0f) return (C - A).Length();
+
+	float t = (AC.x * AB.x + AC.y * AB.y) / lengthSq;
+	t = std::clamp(t, 0.0f, 1.0f);
+
+	Vector2 projection = A + AB * t;
+	return (C - projection).Length();
+}
+
+void SpaceGame::CheckLineCollisions(const std::vector<Vector2>& mousePoints) {
+	if (mousePoints.size() < 2) return;
+
+	// Iterate through line segments
+	for (size_t i = 0; i < mousePoints.size() - 1; ++i) {
+		Vector2 p1 = mousePoints[i];
+		Vector2 p2 = mousePoints[i + 1];
+		
+		auto& actors = m_scene->GetActors();
+		for (auto& actor : actors) {
+			// Check collision for both Enemies and Bullets
+			if (actor->GetTag() == "Enemy" || actor->GetTag() == "PlayerBullet") {
+				Vector2 pos = actor->GetTransform().position;
+				float radius = actor->GetRadius(); // Adjust based on actor's radius/size getter
+
+				if (PointToLineSegDistance(p1, p2, pos) <= radius) {
+					// Collision action:
+					if (actor->GetTag() == "Enemy" || actor->GetTag() == "PlayerBullet") {
+						Vector2 pushDir = (pos - (p1 + p2) * 0.5f).Normalized();
+						actor->SetVelocity(pushDir * 300.0f);
+					}
+				}
+			}
+		}
+	}
+}
+
+void SpaceGame::OnPlayerDead() {
+	m_lives--;
+	m_gameState = (m_lives == 0) ? GameState::GameOver : GameState::StartLevel;
+}
+
+void SpaceGame::AddKillStreakPoints(int basePoints) {
+	if (m_killstreakTimer <= m_killstreakWindow) {
+		m_killstreak++;
+	}
+	else {
+		m_killstreak = 1;
+	}
+
+	m_killstreakTimer = 0.0f;
+
+	float multiplier = std::pow(1.5f, static_cast<float>(m_killstreak - 1));
+	int pointsEarned = basePoints * multiplier;
+
+	m_score += pointsEarned;
+
+}
+
+void SpaceGame::SpawnPlayer() {
+	PlayerDesc playerDesc;
+	playerDesc.name = "Player";
+	playerDesc.tag = "Player";
+	playerDesc.model = assets::playerModel;
+	playerDesc.transform = Transform{ Vector2 { 640.0f, 512.0f }, 0.0f, 15.0f };
+	playerDesc.velocity = Vector2{ 0.0f, 0.0f };
+	playerDesc.damping = 2.0f;
+	playerDesc.speed = 250.0f;
+
+
+	std::unique_ptr<Player> player = std::make_unique<Player>(playerDesc);
+	m_scene->AddActor(std::move(player));
+}
+
+void SpaceGame::SpawnEnemy() {
+	EnemyDesc enemyDesc;
+	enemyDesc.name = "Enemy";
+	enemyDesc.tag = "Enemy";
+	enemyDesc.model = assets::enemyModel;
+	enemyDesc.transform = Transform{ Vector2{RandomFloat((float)Engine::Get().GetRenderer().GetWidth()), RandomFloat((float)Engine::Get().GetRenderer().GetHeight())}, 90.0f, 10.0f };
+	enemyDesc.damping = 300.0f;
+	enemyDesc.speed = RandomFloat(100.0f, 150.0f);
+
+	m_scene->AddActor(std::move(std::make_unique<Enemy>(enemyDesc)));
+	
+}
+
+void SpaceGame::Shutdown() {
+	delete m_scene;
+	m_scene = nullptr;
+}
