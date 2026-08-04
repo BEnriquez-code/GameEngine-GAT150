@@ -7,7 +7,9 @@
 #include <fmod.hpp>
 
 
+
 #include "Text.h"
+
 
 // systems
 #include "File.h"
@@ -16,6 +18,7 @@
 #include "GameTime.h"
 #include "Audio.h"
 #include "ParticleSystem.h"
+#include "Texture.h"
 
 
 //framework

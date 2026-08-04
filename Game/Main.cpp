@@ -26,7 +26,7 @@ public:
 
 
 int main() {
-    cout << "=============Smart Pointer Test=============\n";
+    cout << "=============Unique Pointer Test=============\n";
     {
 		unique_ptr<Object>objectA = make_unique<Object>();
 		cout << objectA.get() << endl;
@@ -36,6 +36,25 @@ int main() {
         cout << objectB.get() << endl;
     }
 
+    cout << "=============Shared Pointer Test=============\n";
+    shared_ptr<Object> objectC;
+    {
+		shared_ptr<Object> objectA = make_shared<Object>();
+		cout << objectA.get() << endl;
+		cout << objectA.use_count() << endl;
+
+        auto objectB = objectA;
+
+		cout << objectB.get() << endl;
+		cout << objectB.use_count() << endl;
+
+		cout << objectC.get() << endl;
+		cout << objectC.use_count() << endl;
+    }
+	cout << objectC.use_count() << endl;
+
+    //return 0;
+
 
     SetWorkingDirectory("Assets");
 
@@ -44,6 +63,11 @@ int main() {
 
     SpaceGame game;
     game.Initialize();
+
+    // create texture, using shared_ptr so texture can be shared
+    std::shared_ptr<Texture> texture = std::make_shared<Texture>();
+    texture->Load("Textures/potato.jpg", Engine::Get().GetRenderer());
+
 
     Scene scene;
     
@@ -118,6 +142,8 @@ int main() {
        
 
         Engine::Get().GetPS().Draw(Engine::Get().GetRenderer());
+        // TODO:: get engine renderer.DrawTexture(...get() texture pointer..., 30, 30);
+        Engine::Get().GetRenderer().DrawTexture(texture.get(), 30, 30);
 
 		game.Draw(Engine::Get().GetRenderer());
         

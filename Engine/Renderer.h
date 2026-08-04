@@ -2,6 +2,7 @@
 
 #include <SDL3/SDL.h>
 #include <SDL3_ttf/SDL_ttf.h>
+#include <SDL3_image/SDL_image.h>
 
 namespace nu
 {
@@ -28,7 +29,10 @@ namespace nu
         int GetWidth() const { return m_width; }
         int GetHeight() const { return m_height; }
 
+        void DrawTexture(class Texture* texture, float x, float y);
+
         friend class Text;
+		friend class Texture;
 
     private:
         SDL_Window* m_window = nullptr;

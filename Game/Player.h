@@ -14,10 +14,6 @@ public:
         m_speed(playerDesc.speed) {
     }
 
-    Player(const nu::Transform& transform) : nu::Actor{ transform } {}
-    Player(const nu::Transform& transform, const nu::Model& model) :
-        Actor{ transform, model }{}
-
     void Update(float dt) override;
     void Draw(const class nu::Renderer& render) const override;
 
