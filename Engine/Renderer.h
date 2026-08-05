@@ -22,14 +22,16 @@ namespace nu
 		void DrawLine(float x1, float y1, float x2, float y2) const;
         void DrawRect(float x, float y, float w, float h)const;
 
-        void DrawModel(const class Model&model, const struct Transform& transform) const;
+        void DrawModel(const class Model& model, const struct Transform& transform) const;
+        void DrawTexture(const class Texture& texture, float x, float y);
+
+        void DrawTexture(const class Texture& texture, float x, float y, float angle = 0.0f, float scale = 1.0f, bool flipH = false);
 
         void Shutdown();
 
         int GetWidth() const { return m_width; }
         int GetHeight() const { return m_height; }
 
-        void DrawTexture(class Texture* texture, float x, float y);
 
         friend class Text;
 		friend class Texture;

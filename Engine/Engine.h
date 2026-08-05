@@ -41,6 +41,8 @@ namespace nu {
 		Time& GetTime() { return m_time; };
 
 		ParticleSystem& GetPS() { return m_particleSystem; }
+
+
 		
 
 	private:

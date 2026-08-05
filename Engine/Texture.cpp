@@ -5,14 +5,12 @@
 
 namespace nu{
 
-    Texture::~Texture()
-    {
+    Texture::~Texture(){
         // if texture exists, destroy texture
         if (m_texture) SDL_DestroyTexture(m_texture);
     }
 
-    bool Texture::Load(const std::string& filename, Renderer& renderer)
-    {
+    bool Texture::Load(const std::string& filename, Renderer& renderer){
         // load image onto surface
         SDL_Surface* surface = IMG_Load(filename.c_str());
         if (!surface)
@@ -31,15 +29,8 @@ namespace nu{
             return false;
         }
 
+        //cache size of texture
+        SDL_GetTextureSize(m_texture, &m_size.x, &m_size.y);
         return true;
     }
-
-    Vector2 Texture::GetSize()
-    {
-        Vector2 v;
-        SDL_GetTextureSize(m_texture, &v.x, &v.y);
-        
-        return v;
-    }
-
 }

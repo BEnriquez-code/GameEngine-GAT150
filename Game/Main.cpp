@@ -143,7 +143,7 @@ int main() {
 
         Engine::Get().GetPS().Draw(Engine::Get().GetRenderer());
         // TODO:: get engine renderer.DrawTexture(...get() texture pointer..., 30, 30);
-        Engine::Get().GetRenderer().DrawTexture(texture.get(), 30, 30);
+        Engine::Get().GetRenderer().DrawTexture(*texture, 30, 30, 45.0f);
 
 		game.Draw(Engine::Get().GetRenderer());
         

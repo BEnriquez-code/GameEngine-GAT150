@@ -6,6 +6,7 @@
 
 #include <algorithm>
 #include <vector>
+#include <memory>
 
 using namespace nu;
 
@@ -14,26 +15,27 @@ bool SpaceGame::Initialize() {
 	m_scene = new Scene();
 	m_scene->SetGame(this);
 
-	m_titleFont = new Font();
-	m_titleFont->Load("Fonts/Arcade.ttf", 64);
+	m_titleFont = std::make_shared<Font>();
+	Resources().Get<Font>("Fonts/Arcade.ttf", 64);
+	
+	m_titleText = new Text(Resources().Get<Font>("Fonts/Arcade.ttf", 64));
+	m_titleText->Create(Engine::Get().GetRenderer(), "Game Title", Color{ 1.0f, 1.0f, 1.0f });
 
-	m_titleText = new Text(m_titleFont);
-
-	m_gameFont = new Font();
+	m_gameFont = std::make_shared<Font>();
 	m_gameFont->Load("Fonts/Arcade.ttf", 32);
 
-	m_scoreText = new Text(m_gameFont);
-	m_livesText = new Text(m_gameFont);
+	m_scoreText = new Text(Resources().Get<Font>("Fonts/Arcade.ttf", 32));
+	m_livesText = new Text(Resources().Get<Font>("Fonts/Arcade.ttf", 32));
 
 	m_gameOverFont = new Font();
 	m_gameOverFont->Load("Fonts/Arcade.ttf", 64);
 
-	m_gameOverText = new Text(m_gameOverFont);
+	m_gameOverText = new Text(Resources().Get<Font>("Fonts/Arcade.ttf", 64));
 
 	m_playFont = new Font();
 	m_playFont->Load("Fonts/Arcade.ttf", 32);
 
-	m_playText = new Text(m_gameOverFont);
+	m_playText = new Text(Resources().Get<Font>("Fonts/Arcade.ttf", 32));
 	m_playText->Create(Engine::Get().GetRenderer(), "Press SPACE to play", Color{ 1.0f, 1.0f, 1.0f });
 
 
