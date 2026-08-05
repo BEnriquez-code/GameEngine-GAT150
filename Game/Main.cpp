@@ -66,12 +66,12 @@ int main() {
 
     // create texture, using shared_ptr so texture can be shared
     std::shared_ptr<Texture> texture = std::make_shared<Texture>();
-    texture->Load("Textures/potato.jpg", Engine::Get().GetRenderer());
-
+	SetWorkingDirectory("Textures");
+    //texture->Load("potato.jpg", Engine::Get().GetRenderer());
+        
 
     Scene scene;
     
-    //SetWorkingDirectory("Assets");
     SetWorkingDirectory("Audio");
     
     Engine::Get().GetAudio().AddSound("test", "test.wav");
@@ -143,7 +143,7 @@ int main() {
 
         Engine::Get().GetPS().Draw(Engine::Get().GetRenderer());
         // TODO:: get engine renderer.DrawTexture(...get() texture pointer..., 30, 30);
-        Engine::Get().GetRenderer().DrawTexture(*texture, 30, 30, 45.0f);
+        Engine::Get().GetRenderer().DrawTexture(*Resources().Get<Texture>("potato.jpg", Engine::Get().GetRenderer()), 30, 30, 45.0f);
 
 		game.Draw(Engine::Get().GetRenderer());
         

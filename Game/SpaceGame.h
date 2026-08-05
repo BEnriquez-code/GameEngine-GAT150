@@ -56,13 +56,11 @@ private:
 	nu::res_t<nu::Font> m_titleFont;
 	nu::res_t<nu::Font> m_gameFont;
 
-	//nu::Font* m_titleFont{ nullptr };
 	nu::Text* m_titleText{ nullptr };
 
 	nu::Font* m_gameOverFont{ nullptr };
 	nu::Text* m_gameOverText{ nullptr };
 
-	//nu::Font* m_gameFont{ nullptr };
 
 	nu::Text* m_scoreText{ nullptr };
 	nu::Text* m_livesText{ nullptr };

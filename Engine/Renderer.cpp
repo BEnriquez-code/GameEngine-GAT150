@@ -72,8 +72,13 @@ namespace nu
 		SDL_RenderRect(m_renderer, &ret);
     }
 
-    void Renderer::DrawTexture(const Texture& texture, float x, float y)
-    {
+    void Renderer::DrawTexture(const Texture& texture, float x, float y){
+
+
+        if (!texture.m_texture) {
+            std::cerr << "Error: Texture is null or not loaded." << std::endl;
+            return;
+        }
         Vector2 size = texture.GetSize();
 
         SDL_FRect destRect;
@@ -85,13 +90,20 @@ namespace nu
     }
 
     void Renderer::DrawTexture(const Texture& texture, float x, float y, float angle, float scale, bool flipH){
+
+        if (!texture.m_texture) {
+            std::cerr << "Error: Texture is null or not loaded." << std::endl;
+            return;
+        }
+        
         Vector2 size = texture.GetSize();
+
 
         SDL_FRect destRect;
         destRect.x = x;
         destRect.y = y;
-        destRect.w = size.x * 3.0f;
-        destRect.h = size.y * 3.0f;
+        destRect.w = size.x;
+        destRect.h = size.y;
         SDL_RenderTextureRotated(m_renderer, texture.m_texture, NULL, &destRect, angle, NULL, flipH ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
     }
 

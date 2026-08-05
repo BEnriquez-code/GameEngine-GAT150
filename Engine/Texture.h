@@ -7,7 +7,6 @@ struct SDL_Texture;
 
 namespace nu {
 
-	class Vector2;
 
 	class Texture : public Resource {
 	public:

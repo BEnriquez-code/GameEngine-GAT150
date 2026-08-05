@@ -16,12 +16,11 @@ bool SpaceGame::Initialize() {
 	m_scene->SetGame(this);
 
 	m_titleFont = std::make_shared<Font>();
-	Resources().Get<Font>("Fonts/Arcade.ttf", 64);
+	m_gameFont = std::make_shared<Font>();
 	
 	m_titleText = new Text(Resources().Get<Font>("Fonts/Arcade.ttf", 64));
 	m_titleText->Create(Engine::Get().GetRenderer(), "Game Title", Color{ 1.0f, 1.0f, 1.0f });
 
-	m_gameFont = std::make_shared<Font>();
 	m_gameFont->Load("Fonts/Arcade.ttf", 32);
 
 	m_scoreText = new Text(Resources().Get<Font>("Fonts/Arcade.ttf", 32));
@@ -185,7 +184,7 @@ void SpaceGame::AddKillStreakPoints(int basePoints) {
 	m_killstreakTimer = 0.0f;
 
 	float multiplier = std::pow(1.5f, static_cast<float>(m_killstreak - 1));
-	int pointsEarned = basePoints * multiplier;
+	int pointsEarned = static_cast<int>(basePoints * multiplier);
 
 	m_score += pointsEarned;
 

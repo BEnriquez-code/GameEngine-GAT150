@@ -42,7 +42,8 @@ namespace nu {
 
 		ParticleSystem& GetPS() { return m_particleSystem; }
 
-
+		Engine(const Engine&) = delete;
+		Engine& operator=(const Engine&) = delete;
 		
 
 	private:
