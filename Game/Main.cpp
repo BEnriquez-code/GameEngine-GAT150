@@ -11,6 +11,7 @@
 #include <vector>
 #include <map>
 #include <memory>
+#include <random>
 
 using namespace std;
 using namespace nu;
@@ -24,8 +25,45 @@ public:
     Object& operator= (const Object& object) { cout << "copy assign\n"; return *this; }
 };
 
+uint32_t seed = 1234;
+
+uint32_t RNG() {
+	seed = (seed * 1103515245) + 12345;
+    return seed;
+}
 
 int main() {
+    /*
+    //rand()
+    for (size_t i = 0; i < 10; i++) cout << RNG() << " ";
+    cout << endl;
+    
+	seed = 1234;
+
+    for (size_t i = 0; i < 10; i++)cout << RNG() << " ";
+    cout << endl;
+
+    //srand((unsigned int)time(nullptr));
+    SeedRandom((unsigned int)time(nullptr));
+    for (size_t i = 0; i < 10; i++)cout << rand() << " ";
+    cout << endl;
+
+    //random<>
+    random_device randomDevice;
+    cout << randomDevice.min() << endl;
+    cout << randomDevice.max() << endl;
+    cout << randomDevice.entropy() << endl;
+
+	std::mt19937 generator(randomDevice());
+    std::uniform_int_distribution<> dist(0,20);
+
+	for (size_t i = 0; i < 10; i++)cout << dist(generator) << " ";
+	cout << endl;
+
+	std::uniform_real_distribution<float> distReal(-10.0f, 20.0f);
+    for (size_t i = 0; i < 10; i++)cout << distReal(generator) << " ";
+
+    return 0;
     cout << "=============Unique Pointer Test=============\n";
     {
 		unique_ptr<Object>objectA = make_unique<Object>();
@@ -54,7 +92,7 @@ int main() {
 	cout << objectC.use_count() << endl;
 
     //return 0;
-
+    */
 
     SetWorkingDirectory("Assets");
 
@@ -67,7 +105,7 @@ int main() {
     // create texture, using shared_ptr so texture can be shared
     std::shared_ptr<Texture> texture = std::make_shared<Texture>();
 	SetWorkingDirectory("Textures");
-    //texture->Load("potato.jpg", Engine::Get().GetRenderer());
+    
         
 
     Scene scene;
@@ -143,7 +181,7 @@ int main() {
 
         Engine::Get().GetPS().Draw(Engine::Get().GetRenderer());
         // TODO:: get engine renderer.DrawTexture(...get() texture pointer..., 30, 30);
-        Engine::Get().GetRenderer().DrawTexture(*Resources().Get<Texture>("potato.jpg", Engine::Get().GetRenderer()), 30, 30, 45.0f);
+        //Engine::Get().GetRenderer().DrawTexture(*Resources().Get<Texture>("potato.jpg", Engine::Get().GetRenderer()), 30, 30, 45.0f);
 
 		game.Draw(Engine::Get().GetRenderer());
         

@@ -194,7 +194,8 @@ void SpaceGame::SpawnPlayer() {
 	PlayerDesc playerDesc;
 	playerDesc.name = "Player";
 	playerDesc.tag = "Player";
-	playerDesc.model = assets::playerModel;
+	//playerDesc.model = assets::playerModel;
+	playerDesc.texture = Resources().Get<Texture>("player.png", Engine::Get().GetRenderer());
 	playerDesc.transform = Transform{ Vector2 { 640.0f, 512.0f }, 0.0f, 15.0f };
 	playerDesc.velocity = Vector2{ 0.0f, 0.0f };
 	playerDesc.damping = 2.0f;
@@ -209,10 +210,12 @@ void SpaceGame::SpawnEnemy() {
 	EnemyDesc enemyDesc;
 	enemyDesc.name = "Enemy";
 	enemyDesc.tag = "Enemy";
-	enemyDesc.model = assets::enemyModel;
+	//enemyDesc.model = assets::enemyModel;
+	enemyDesc.texture = Resources().Get<Texture>("player.png", Engine::Get().GetRenderer());
 	enemyDesc.transform = Transform{ Vector2{RandomFloat((float)Engine::Get().GetRenderer().GetWidth()), RandomFloat((float)Engine::Get().GetRenderer().GetHeight())}, 90.0f, 10.0f };
 	enemyDesc.damping = 300.0f;
 	enemyDesc.speed = RandomFloat(100.0f, 150.0f);
+
 
 	m_scene->AddActor(std::move(std::make_unique<Enemy>(enemyDesc)));
 	

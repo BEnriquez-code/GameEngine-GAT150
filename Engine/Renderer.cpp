@@ -72,24 +72,8 @@ namespace nu
 		SDL_RenderRect(m_renderer, &ret);
     }
 
-    void Renderer::DrawTexture(const Texture& texture, float x, float y){
 
-
-        if (!texture.m_texture) {
-            std::cerr << "Error: Texture is null or not loaded." << std::endl;
-            return;
-        }
-        Vector2 size = texture.GetSize();
-
-        SDL_FRect destRect;
-        destRect.x = x;
-        destRect.y = y;
-        destRect.w = size.x * 3.0f;
-        destRect.h = size.y * 3.0f;
-        SDL_RenderTexture(m_renderer, texture.m_texture, NULL, &destRect);
-    }
-
-    void Renderer::DrawTexture(const Texture& texture, float x, float y, float angle, float scale, bool flipH){
+    void Renderer::DrawTexture(const Texture& texture, float x, float y, float angle, float scale, bool flipH) const{
 
         if (!texture.m_texture) {
             std::cerr << "Error: Texture is null or not loaded." << std::endl;

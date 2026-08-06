@@ -40,9 +40,12 @@ private:
 	void SpawnPlayer();
 	void SpawnEnemy();
 	
+	int m_prevScore{ -1 };
+	int m_prevLives{ -1 };
+
 	int m_score{ 0 };
 	int m_lives{0};
-	
+
 	float m_stateTimer = 0.0f;
 
 	float m_spawnTimer = 0.0f;
