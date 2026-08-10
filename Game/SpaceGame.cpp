@@ -115,6 +115,7 @@ void SpaceGame::Draw(Renderer& renderer) {
 	case SpaceGame::GameState::Game:
 		renderer.DrawTexture(*m_backgroundTexture, 0.0f, 0.0f,  0.0f, 0.0f, false);
 		m_scene->Draw(renderer);
+		Engine::Get().GetPS().Draw(Engine::Get().GetRenderer());
 
 		m_scoreText->Create(renderer, "Score: " + std::to_string(m_score), { 1.0f, 1.0f, 1.0f });
 		m_scoreText->Draw(renderer, 30, 30);

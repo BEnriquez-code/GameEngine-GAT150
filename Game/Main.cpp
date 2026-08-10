@@ -110,13 +110,14 @@ int main() {
         Engine::Get().GetRenderer().SetColor(0.0f, 0.0f, 0.0f);
         Engine::Get().GetRenderer().Clear();
 
-        for (int i = 0; i< (int)mouseLinePoints.size() - 1; i++) {
-            Engine::Get().GetRenderer().SetColor(1.0f, 1.0f, 1.0f);
-            Engine::Get().GetRenderer().DrawLine(mouseLinePoints[i].x, mouseLinePoints[i].y, mouseLinePoints[i+1].x, mouseLinePoints[i+1].y);
-        }
+        
        
         game.Draw(Engine::Get().GetRenderer());
-        Engine::Get().GetPS().Draw(Engine::Get().GetRenderer());
+
+        for (int i = 0; i < (int)mouseLinePoints.size() - 1; i++) {
+            Engine::Get().GetRenderer().SetColor(1.0f, 1.0f, 1.0f);
+            Engine::Get().GetRenderer().DrawLine(mouseLinePoints[i].x, mouseLinePoints[i].y, mouseLinePoints[i + 1].x, mouseLinePoints[i + 1].y);
+        }
        
         
         Engine::Get().GetRenderer().Present();
