@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "Vector2.h"
 #include "Text.h"
+#include "Texture.h"
 #include "ResourceManager.h"
 
 #include <vector>
@@ -55,6 +56,8 @@ private:
 	int m_killstreak = 0;
 	float m_killstreakTimer = 0.0f;
 	const float m_killstreakWindow = 2.5f;
+
+	std::shared_ptr<nu::Texture> m_backgroundTexture{nullptr};
 
 	nu::res_t<nu::Font> m_titleFont;
 	nu::res_t<nu::Font> m_gameFont;

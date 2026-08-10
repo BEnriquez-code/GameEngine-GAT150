@@ -15,8 +15,11 @@ bool SpaceGame::Initialize() {
 	m_scene = new Scene();
 	m_scene->SetGame(this);
 
+	m_backgroundTexture = Resources().Get<Texture>("Textures/background.png", Engine::Get().GetRenderer());
+	
 	m_titleFont = std::make_shared<Font>();
 	m_gameFont = std::make_shared<Font>();
+
 	
 	m_titleText = new Text(Resources().Get<Font>("Fonts/Arcade.ttf", 64));
 	m_titleText->Create(Engine::Get().GetRenderer(), "Game Title", Color{ 1.0f, 1.0f, 1.0f });
@@ -110,6 +113,9 @@ void SpaceGame::Draw(Renderer& renderer) {
 	case SpaceGame::GameState::StartLevel:
 		break;
 	case SpaceGame::GameState::Game:
+		renderer.DrawTexture(*m_backgroundTexture, 0.0f, 0.0f,  0.0f, 0.0f, false);
+		m_scene->Draw(renderer);
+
 		m_scoreText->Create(renderer, "Score: " + std::to_string(m_score), { 1.0f, 1.0f, 1.0f });
 		m_scoreText->Draw(renderer, 30, 30);
 
@@ -156,7 +162,7 @@ void SpaceGame::CheckLineCollisions(const std::vector<Vector2>& mousePoints) {
 				Vector2 pos = actor->GetTransform().position;
 				float radius = actor->GetRadius(); // Adjust based on actor's radius/size getter
 
-				if (PointToLineSegDistance(p1, p2, pos) <= radius) {
+				if (PointToLineSegDistance(p1, p2, pos) <= radius * 8.0f) {
 					// Collision action:
 					if (actor->GetTag() == "Enemy" || actor->GetTag() == "PlayerBullet") {
 						Vector2 pushDir = (pos - (p1 + p2) * 0.5f).Normalized();
@@ -195,7 +201,7 @@ void SpaceGame::SpawnPlayer() {
 	playerDesc.name = "Player";
 	playerDesc.tag = "Player";
 	//playerDesc.model = assets::playerModel;
-	playerDesc.texture = Resources().Get<Texture>("player.png", Engine::Get().GetRenderer());
+	playerDesc.texture = Resources().Get<Texture>("Textures/player.png", Engine::Get().GetRenderer());
 	playerDesc.transform = Transform{ Vector2 { 640.0f, 512.0f }, 0.0f, 15.0f };
 	playerDesc.velocity = Vector2{ 0.0f, 0.0f };
 	playerDesc.damping = 2.0f;
@@ -211,7 +217,7 @@ void SpaceGame::SpawnEnemy() {
 	enemyDesc.name = "Enemy";
 	enemyDesc.tag = "Enemy";
 	//enemyDesc.model = assets::enemyModel;
-	enemyDesc.texture = Resources().Get<Texture>("player.png", Engine::Get().GetRenderer());
+	enemyDesc.texture = Resources().Get<Texture>("Textures/enemy.png", Engine::Get().GetRenderer());
 	enemyDesc.transform = Transform{ Vector2{RandomFloat((float)Engine::Get().GetRenderer().GetWidth()), RandomFloat((float)Engine::Get().GetRenderer().GetHeight())}, 90.0f, 10.0f };
 	enemyDesc.damping = 300.0f;
 	enemyDesc.speed = RandomFloat(100.0f, 150.0f);

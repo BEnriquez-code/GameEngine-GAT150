@@ -1,9 +1,9 @@
 #include "Player.h"
+#include "ResourceManager.h"
 #include "Bullet.h"
 #include "Assets.h"
 #include "Renderer.h"
 #include "Engine.h"
-
 #include <iostream>
 
 void Player::Update(float dt) {
@@ -43,7 +43,8 @@ void Player::Update(float dt) {
         BulletDesc bulletDesc;
         bulletDesc.name = "Bullet";
         bulletDesc.tag = "PlayerBullet";
-        bulletDesc.model = assets::bulletModel;
+        //bulletDesc.model = assets::bulletModel;
+		bulletDesc.texture = nu::Resources().Get<nu::Texture>("Textures/bullet.png", nu::Engine::Get().GetRenderer());
         bulletDesc.transform = m_transform;
         bulletDesc.speed = 1000.0f;
         bulletDesc.lifespan = 2.0f;
@@ -61,10 +62,9 @@ void Player::Update(float dt) {
     
     nu::Particle particle;
     particle.position = m_transform.position;
-    particle.color = { 1.0f, 1.0f, 1.0f };
+    particle.texture = nu::Resources().Get<nu::Texture>("Textures/particle.png", nu::Engine::Get().GetRenderer());
     particle.lifespan = nu::RandomFloat(0.5f, 1.5f);
     particle.velocity = { nu::RandomFloat(-200.0f, 200.0f), nu::RandomFloat(-200.0f, 200.0f) };
-
 
     
     Actor::Update(dt);

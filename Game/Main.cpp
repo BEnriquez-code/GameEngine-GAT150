@@ -33,67 +33,7 @@ uint32_t RNG() {
 }
 
 int main() {
-    /*
-    //rand()
-    for (size_t i = 0; i < 10; i++) cout << RNG() << " ";
-    cout << endl;
     
-	seed = 1234;
-
-    for (size_t i = 0; i < 10; i++)cout << RNG() << " ";
-    cout << endl;
-
-    //srand((unsigned int)time(nullptr));
-    SeedRandom((unsigned int)time(nullptr));
-    for (size_t i = 0; i < 10; i++)cout << rand() << " ";
-    cout << endl;
-
-    //random<>
-    random_device randomDevice;
-    cout << randomDevice.min() << endl;
-    cout << randomDevice.max() << endl;
-    cout << randomDevice.entropy() << endl;
-
-	std::mt19937 generator(randomDevice());
-    std::uniform_int_distribution<> dist(0,20);
-
-	for (size_t i = 0; i < 10; i++)cout << dist(generator) << " ";
-	cout << endl;
-
-	std::uniform_real_distribution<float> distReal(-10.0f, 20.0f);
-    for (size_t i = 0; i < 10; i++)cout << distReal(generator) << " ";
-
-    return 0;
-    cout << "=============Unique Pointer Test=============\n";
-    {
-		unique_ptr<Object>objectA = make_unique<Object>();
-		cout << objectA.get() << endl;
-        unique_ptr<Object>objectB;
-
-		objectB = move(objectA);
-        cout << objectB.get() << endl;
-    }
-
-    cout << "=============Shared Pointer Test=============\n";
-    shared_ptr<Object> objectC;
-    {
-		shared_ptr<Object> objectA = make_shared<Object>();
-		cout << objectA.get() << endl;
-		cout << objectA.use_count() << endl;
-
-        auto objectB = objectA;
-
-		cout << objectB.get() << endl;
-		cout << objectB.use_count() << endl;
-
-		cout << objectC.get() << endl;
-		cout << objectC.use_count() << endl;
-    }
-	cout << objectC.use_count() << endl;
-
-    //return 0;
-    */
-
     SetWorkingDirectory("Assets");
 
     //Intialization
@@ -104,25 +44,22 @@ int main() {
 
     // create texture, using shared_ptr so texture can be shared
     std::shared_ptr<Texture> texture = std::make_shared<Texture>();
-	SetWorkingDirectory("Textures");
-    
+	auto particleTexture = Resources().Get<Texture>("Textures/particle.png", Engine::Get().GetRenderer());
+	Engine::Get().GetPS().SetTexture(particleTexture);
         
 
     Scene scene;
     
-    SetWorkingDirectory("Audio");
     
-    Engine::Get().GetAudio().AddSound("test", "test.wav");
-    Engine::Get().GetAudio().AddSound("thrust", "thrust.wav");
-    Engine::Get().GetAudio().AddSound("mario", "mario.mp3");
-    Engine::Get().GetAudio().AddSound("hee-hee", "hee-hee.mp3");
-    Engine::Get().GetAudio().AddSound("bass", "bass.wav");
-    Engine::Get().GetAudio().AddSound("background", "background_music.ogg");
-
+    Engine::Get().GetAudio().AddSound("test", "Audio/test.wav");
+    Engine::Get().GetAudio().AddSound("thrust", "Audio/thrust.wav");
+    Engine::Get().GetAudio().AddSound("mario", "Audio/mario.mp3");
+    Engine::Get().GetAudio().AddSound("hee-hee", "Audio/hee-hee.mp3");
+    Engine::Get().GetAudio().AddSound("bass", "Audio/bass.wav");
+    Engine::Get().GetAudio().AddSound("background", "Audio/background_music.ogg");
 			
     Engine::Get().GetAudio().PlaySound("background");
 
-    SetWorkingDirectory("Fonts");
     
 
     vector<Vector2> mouseLinePoints;   
@@ -178,12 +115,9 @@ int main() {
             Engine::Get().GetRenderer().DrawLine(mouseLinePoints[i].x, mouseLinePoints[i].y, mouseLinePoints[i+1].x, mouseLinePoints[i+1].y);
         }
        
-
+        game.Draw(Engine::Get().GetRenderer());
         Engine::Get().GetPS().Draw(Engine::Get().GetRenderer());
-        // TODO:: get engine renderer.DrawTexture(...get() texture pointer..., 30, 30);
-        //Engine::Get().GetRenderer().DrawTexture(*Resources().Get<Texture>("potato.jpg", Engine::Get().GetRenderer()), 30, 30, 45.0f);
-
-		game.Draw(Engine::Get().GetRenderer());
+       
         
         Engine::Get().GetRenderer().Present();
     }

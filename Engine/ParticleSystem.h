@@ -1,6 +1,7 @@
 #pragma once
 #include "Vector2.h"
 #include "Vector3.h"
+#include "Texture.h"
 #include <vector>
 namespace nu {
 	struct Particle
@@ -11,6 +12,7 @@ namespace nu {
 		Vector2 position{ 0, 0 };
 		Vector2 velocity{ 0, 0 };
 		Color color{ 0.0f, 0.0f, 0.0f };
+		res_t<Texture> texture;
 	};
 
 	class ParticleSystem
@@ -25,6 +27,7 @@ namespace nu {
 		void Draw(const class Renderer& renderer);
 
 		void AddParticle(const Particle& particle);
+		void SetTexture(res_t<Texture> texture) { m_texture = texture; };
 
 	private:
 		Particle* GetFreeParticle();
@@ -32,6 +35,7 @@ namespace nu {
 	private:
 		// store particles in particle pool
 		std::vector<Particle> m_particles;
+		res_t<Texture> m_texture;
 	};
 
 }

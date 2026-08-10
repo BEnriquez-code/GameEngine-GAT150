@@ -41,20 +41,23 @@ namespace nu {
 
 	void ParticleSystem::Draw(const Renderer& renderer)
 	{
-		// draw all active particlee
+
 		for (auto& particle : m_particles)
 		{
-			if (particle.active)
-			{
-				renderer.SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-				renderer.DrawPoint(particle.position.x, particle.position.y);
-				// set particle color and draw point at current position
-				// TODO: set color with particle color
-				// TODO: draw point with particle position
+			if (particle.active) {
 
-				
+				res_t<Texture> activeTexture = particle.texture ? particle.texture : m_texture;
+
+				if (activeTexture) {
+					renderer.DrawTexture(*activeTexture, particle.position.x, particle.position.y);
+				}
+				else {
+					renderer.SetColor(particle.color.r, particle.color.g, particle.color.b, 1.0f);
+					renderer.DrawPoint(particle.position.x, particle.position.y);
+				}
 			}
 		}
+
 	}
 
 	void ParticleSystem::AddParticle(const Particle& particle)
