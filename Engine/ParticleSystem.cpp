@@ -21,7 +21,7 @@ namespace nu {
 		// update active particles
 		for (auto& particle : m_particles)
 		{
-			if (!particle.active/*TODO: particle is not active */) continue;
+			if (!particle.active) continue;
 
 			
 			// reduce particle.lifespan by subtracting delta time
@@ -31,6 +31,11 @@ namespace nu {
 			// TODO: particle.active = particle lifespan > 0
 			if (particle.lifespan > 0) {
 				particle.active = (particle.lifespan > 0.0f);
+			}
+
+			if (particle.lifespan <= 0) {
+				particle.active = false;
+				continue;
 			}
 
 			// update position with velocity (multiply by dt)

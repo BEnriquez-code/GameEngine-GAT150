@@ -12,29 +12,16 @@
 #include <map>
 #include <memory>
 #include <random>
+#include <fstream>
 
 using namespace std;
 using namespace nu;
 
-class Object {
-public:
-    Object() { cout << "constructor\n"; }
-    ~Object() { cout << "destructor\n"; }
-
-    Object(const Object& object) { cout << "copy\n"; }
-    Object& operator= (const Object& object) { cout << "copy assign\n"; return *this; }
-};
-
-uint32_t seed = 1234;
-
-uint32_t RNG() {
-	seed = (seed * 1103515245) + 12345;
-    return seed;
-}
 
 int main() {
     
     SetWorkingDirectory("Assets");
+
 
     //Intialization
     Engine::Get().Initialize();
