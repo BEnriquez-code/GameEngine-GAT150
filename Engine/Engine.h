@@ -19,6 +19,7 @@
 #include "Audio.h"
 #include "ParticleSystem.h"
 #include "Texture.h"
+#include "Json.h"
 
 
 //framework
