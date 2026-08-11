@@ -5,8 +5,9 @@
 #include "MathUtils.h"
 #include "Transform.h"
 #include <fmod.hpp>
+#include "StringUtils.h"
 
-
+#include "Factory.h"
 
 #include "Text.h"
 
