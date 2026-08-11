@@ -121,7 +121,7 @@ void SpaceGame::Draw(Renderer& renderer) {
 		m_scoreText->Draw(renderer, 30, 30);
 
 		m_livesText->Create(renderer, "Lives: " + std::to_string(m_lives), { 1.0f, 1.0f, 1.0f });
-		m_livesText->Draw(renderer, 1790, 30);
+		m_livesText->Draw(renderer, 30, 100);
 		break;
 	case SpaceGame::GameState::GameOver:
 		m_gameOverText->Create(Engine::Get().GetRenderer(), "Game Over", Color{ 1.0f, 1.0f, 1.0f });
