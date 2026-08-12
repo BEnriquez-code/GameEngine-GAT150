@@ -60,6 +60,8 @@ namespace nu {
         void SetDestroyed(bool destroy = true) { m_destroyed = destroy; }
         bool GetDestroyed() const { return m_destroyed; }
 
+        virtual void Read(const json::value_t& value) override;
+
         friend Scene;
 
     protected:

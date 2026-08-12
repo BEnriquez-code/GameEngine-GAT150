@@ -17,144 +17,30 @@
 using namespace std;
 using namespace nu;
 
-class Animal {
-
-public:
-    virtual void Speak() {
-        std::cout << "Animal speaks" << std::endl;
-    }
-};
-
-class Cat : public Animal {
-    void Speak() override {
-        std::cout << "Meow" << std::endl;
-	}
-};
-
-class Dog : public Animal {
-    void Speak() override {
-        std::cout << "Woof" << std::endl;
-    }
-};
-
-class Bird : public Animal {
-    void Speak() override {
-        std::cout << "Chirp" << std::endl;
-    }
-};
-
-enum class Type {
-    Cat = 1,
-    Dog = 2, 
-	Bird = 3
-};
-
-//Animal* CreateAnimal(int id) {
-//    Animal* animal = nullptr;
-//
-//
-//    switch (id) {
-//        case Type::Cat:
-//			animal = new Cat;
-//            break;
-//        case Type::Dog:
-//            animal = new Dog;
-//            break;
-//        case Type::Bird:
-//			animal = new Bird;
-//            break;
-//    }
-//	return animal;
-//}
-//Animal* CreateAnimal(const std::string& id) {
-//    Animal* animal = nullptr;
-//
-//    if (nu::EqualsIgnoreCase(id,"Cat")) animal = new Cat;
-//    else if (nu::EqualsIgnoreCase(id, "Dog")) animal = new Dog;
-//	else if (nu::EqualsIgnoreCase(id, "Bird")) animal = new Bird;
-//
-//	return animal;
-//}
-//
-//class ICreator {
-//public:
-//    virtual ~ICreator() = default;
-//    virtual std::unique_ptr<Animal> Create() = 0;
-//};
-//
-//template<typename T>
-//class Creator : public ICreator {
-//public:
-//    unique_ptr<Animal> Create() override { return make_unique<T>(); };
-//};
-//
-//
-//std::map<string, unique_ptr<ICreator>> registry;
 
 int main() {
-
-    /*registry["Cat"] = make_unique<Creator<Cat>>();
-    registry["Dog"] = make_unique<Creator<Dog>>();
-    registry["Bird"] = make_unique<Creator<Bird>>();
-    {
-        auto animal = registry["Dog"]->Create();
-
-        animal->Speak();
-    }*/
-
-    /*string selection;
-	cout << "Select an animal (Cat, Dog, Bird): ";
-	cin >> selection;
-
-	auto animal = CreateAnimal(selection);
-    animal->Speak();*/
-
-    
     SetWorkingDirectory("Assets");
 
- //   //read/show the data from the json file
- //   rapidjson::Document document;
- //   json::Load("Data/data.json", document);
+    Factory::Instance().Register<Actor>("Actor");
+    Factory::Instance().Register<Object>("Object");
 
- //   std::string name = "Izak";
- //   int age = 19;
-	//float speed = 10.0f;
- //   bool isAlive = true;
-	//Vector2 position{ 0.0f, 0.0f };
-	//Vector3 color{ 1.0f, 1.0f, 1.0f };
+    auto actor = Factory::Instance().Create<Actor>("Actor");
+    cout << actor->IsActive() << endl;
+    
+    auto object = Factory::Instance().Create("Object");
+    cout << object->IsActive() << endl;
 
+    json::document_t document;
+    if (json::Load("Data/scene.json", document)) {
+        actor->Read(document);
+        cout << actor->GetName() << endl;
+        cout << actor->GetTag() << endl;
 
- //   // load the json data from a file
- //   std::string buffer;
- //   if (ReadTextFile("Data/data.json", buffer))
- //   {
- //       // show the contents of the json file (debug)
- //       std::cout << buffer << std::endl;
+        cout << actor->GetTransform().rotation << endl;
+    }
 
- //       // create json document from the json file contents
- //       if (json::Load("Data/data.json", document))
- //       {
- //           // read the age data (int) from the json
- //           int age;
- //           json::Read(document, "age", age);
- //           // show the age data
- //           std::cout << age << std::endl;
- //       }
- //   }
+    return 0;
 
- //   // read the json data
- //   nu::json::Read(document, "name", name);
- //   nu::json::Read(document, "age", age);
- //   nu::json::Read(document, "speed", speed);
- //   nu::json::Read(document, "isAlive", isAlive);
- //   nu::json::Read(document, "position", position);
- //   nu::json::Read(document, "color", color);
-
-
- //   // show the data
- //   std::cout << name << " " << age << " " << speed << " " << isAlive << std::endl;
- //   std::cout << position.x << " " << position.y << std::endl;
- //   std::cout << color.r << " " << color.g << " " << color.b << " " << std::endl;
 
     //Intialization
     Engine::Get().Initialize();

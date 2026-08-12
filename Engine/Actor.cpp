@@ -30,6 +30,20 @@ namespace nu {
 	   if (m_texture) return (m_texture->GetSize().Length() * 0.25f ) * 0.25f;
 
 	   return 0.0f;
-    }   
+    }
+
+    void Actor::Read(const json::value_t& value) {
+        Object::Read(value);
+
+        if (JSON_HAS_NAME(value, "transform")) {
+            m_transform.Read(JSON_GET_NAME(value, "transform"));
+        }
+
+        JSON_READ_NAME(value, "name", m_name);
+        JSON_READ_NAME(value, "tag", m_tag);
+        JSON_READ_NAME(value, "lifespan", m_lifespan);
+        JSON_READ_NAME(value, "velocity", m_velocity);
+        JSON_READ_NAME(value, "damping", m_damping);
+    }
 
 }
