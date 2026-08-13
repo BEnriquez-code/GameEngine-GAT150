@@ -8,7 +8,10 @@ namespace nu {
         float scale{1.0f};
 
         void Read(const json::value_t& value) {
-            JSON_READ(value, position);
+            if (JSON_HAS(value, position)) {
+                JSON_READ(value, position);
+            }   
+            
             JSON_READ(value, rotation);
             JSON_READ(value, scale);
         }

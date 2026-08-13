@@ -1,13 +1,40 @@
 {
-    "name": "Bulmaro Enriquez",
-    "tag": "Instructor",
-    "active": true,
-    "lifespan":2.8,
-    "damping":0.89,
-    "velocity":[2.0, 1.0],
-    "transform": {
-        "position": [2.4, 5.6],
-        "rotation": 45.5,
-        "scale": 2.6        
-    }
+    "actors": [
+        {
+            "name": "Player",
+            "tag": "Player",
+            "type": "Player",
+            "prototype": false,
+            "active": true,
+            "damping": 2.0,
+            "speed": 250.0,
+            "velocity": [ 0.0, 0.0 ],
+            "texture": "Textures/player.png",
+            "transform": {
+                "position": [ 640.0, 512.0 ],
+                "rotation": 0.0,
+                "scale": 15.0
+            }
+        },
+        {
+            "name": "Enemy",
+            "tag": "Enemy",
+            "type": "Enemy",
+            "prototype": false,
+            "active": true,
+            "damping": 300.0,
+            "speed": 100.0,
+            "texture": "Textures/enemy.png"
+        },
+        {
+            "name": "Bullet",
+            "tag": "PlayerBullet",
+            "type": "Bullet",
+            "prototype": false,
+            "lifespan": 2.0,
+            "texture": "Textures/bullet.png",
+            "speed": 1000.0
+        }
+    ]
+
 }

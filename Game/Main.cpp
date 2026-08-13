@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Assets.h"
+#include "Bullet.h"
 #include "SpaceGame.h"
 #include "Json.h"
 #include <fmod.hpp>
@@ -20,10 +21,14 @@ using namespace nu;
 
 int main() {
     SetWorkingDirectory("Assets");
-
+    
     Factory::Instance().Register<Actor>("Actor");
     Factory::Instance().Register<Object>("Object");
+    Factory::Instance().Register<Player>("Player");
+    Factory::Instance().Register<Enemy>("Enemy");
+    Factory::Instance().Register<Bullet>("Bullet");
 
+    /*
     auto actor = Factory::Instance().Create<Actor>("Actor");
     cout << actor->IsActive() << endl;
     
@@ -38,8 +43,8 @@ int main() {
 
         cout << actor->GetTransform().rotation << endl;
     }
-
-    return 0;
+    */
+    //return 0;
 
 
     //Intialization
@@ -56,13 +61,6 @@ int main() {
 
     Scene scene;
     
-    
-    Engine::Get().GetAudio().AddSound("test", "Audio/test.wav");
-    Engine::Get().GetAudio().AddSound("thrust", "Audio/thrust.wav");
-    Engine::Get().GetAudio().AddSound("mario", "Audio/mario.mp3");
-    Engine::Get().GetAudio().AddSound("hee-hee", "Audio/hee-hee.mp3");
-    Engine::Get().GetAudio().AddSound("bass", "Audio/bass.wav");
-    Engine::Get().GetAudio().AddSound("background", "Audio/background_music.ogg");
 			
     Engine::Get().GetAudio().PlaySound("background");
 

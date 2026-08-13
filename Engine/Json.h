@@ -7,6 +7,7 @@
 
 #define JSON_READ(value, data) nu::json::Read(value, #data, data)
 #define JSON_READ_NAME(value, name, data) nu::json::Read(value, name, data)
+#define JSON_READ_OPTIONAL(value, name, data) nu::json::ReadOptional(value, name, data)
 
 #define JSON_HAS_NAME(value, name) value.HasMember(name)
 #define JSON_HAS(value, data) value.HasMember(#data)
@@ -28,4 +29,13 @@ namespace nu::json {
 	bool Read(const value_t& value, const std::string& name, std::string& data);
 	bool Read(const value_t& value, const std::string& name, Vector2& data);
 	bool Read(const value_t& value, const std::string& name, Vector3& data);
+
+
+	template<typename T>
+	bool ReadOptional(const value_t& value, const std::string& name, T& data) {
+		if (!value.HasMember(name.c_str())) {
+			return false;
+		}
+		return Read(value, name, data);
+	}
 }

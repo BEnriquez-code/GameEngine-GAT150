@@ -14,6 +14,8 @@ public:
         m_speed(playerDesc.speed) {
     }
 
+    CLASS_PROTOTYPE(Player)
+
     void Update(float dt) override;
     void Draw(const class nu::Renderer& render) const override;
 

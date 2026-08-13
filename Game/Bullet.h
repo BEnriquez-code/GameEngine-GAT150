@@ -15,7 +15,9 @@ public:
         m_speed(bulletDesc.speed)
     {}
 
+    CLASS_PROTOTYPE(Bullet)
     void Update(float dt) override;
+    void Read(const nu::json::value_t& value) override;
 
 private:
 	float m_speed = 100.0f;

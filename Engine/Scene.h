@@ -12,6 +12,8 @@ namespace nu{
 		const std::vector<std::unique_ptr<Actor>>& GetActors() const { return m_actors; }
 		void RemoveAllActors();
 
+		bool Load(const std::string& sceneName);
+
 		void Update(float dt);
 		void Draw(const class Renderer& renderer);
 

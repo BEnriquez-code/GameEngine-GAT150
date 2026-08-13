@@ -35,6 +35,8 @@ namespace nu {
             m_texture{actorDesc.texture}
         {}
 
+        CLASS_PROTOTYPE(Actor)
+
         virtual void Update(float dt);
         virtual void Draw(const class Renderer& render) const;
 

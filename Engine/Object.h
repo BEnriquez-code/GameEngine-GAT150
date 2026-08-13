@@ -1,11 +1,17 @@
 #pragma once
 #include "Json.h"
 #include <string>
+#include <memory>
+
+#define CLASS_PROTOTYPE(className) virtual std::unique_ptr<Object> Clone() const { return std::make_unique<className>(*this); }
+
 namespace nu {
 	class Object {
 	public:
 		Object() = default;
 		virtual ~Object() = default;
+
+		CLASS_PROTOTYPE(Object)
 		
 		const std::string GetName() const { return m_name; }
 		bool IsActive() const { return m_active; }
@@ -13,7 +19,7 @@ namespace nu {
 
 		virtual void Read(const json::value_t& value) {
 			JSON_READ_NAME(value, "name", m_name);
-			JSON_READ_NAME(value, "active", m_active);
+			JSON_READ_OPTIONAL(value, "active", m_active);
 		}
 
 	protected:

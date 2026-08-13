@@ -3,6 +3,8 @@
 #include "Renderer.h"
 #include "Texture.h"
 #include "MathUtils.h"
+#include "Engine.h"
+#include "ResourceManager.h"
 
 namespace nu {
     void Actor::Update(float dt) {
@@ -39,11 +41,19 @@ namespace nu {
             m_transform.Read(JSON_GET_NAME(value, "transform"));
         }
 
+        std::string textureName;
+        JSON_READ_NAME(value, "texture", textureName);
+        if (!textureName.empty()) {
+            m_texture = Resources().Get<Texture>(textureName, Engine::Get().GetRenderer());
+        }
+
+
         JSON_READ_NAME(value, "name", m_name);
         JSON_READ_NAME(value, "tag", m_tag);
-        JSON_READ_NAME(value, "lifespan", m_lifespan);
-        JSON_READ_NAME(value, "velocity", m_velocity);
-        JSON_READ_NAME(value, "damping", m_damping);
+        
+        JSON_READ_OPTIONAL(value, "velocity", m_velocity);
+        JSON_READ_OPTIONAL(value, "damping", m_damping);
+
     }
 
 }

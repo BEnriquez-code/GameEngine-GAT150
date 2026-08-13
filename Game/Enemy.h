@@ -13,7 +13,10 @@ public:
 		Actor(enemyDesc),
 		m_speed(enemyDesc.speed) {}
 
+	CLASS_PROTOTYPE(Enemy)
+
 	void Update(float dt) override;
+	void Read(const nu::json::value_t& value) override;
 	void OnCollision(Actor* other) override;
 
 private:
