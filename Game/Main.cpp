@@ -21,8 +21,6 @@ using namespace nu;
 
 int main() {
     SetWorkingDirectory("Assets");
-    
-
    
     //Intialization
     Engine::Get().Initialize();
@@ -37,11 +35,8 @@ int main() {
         
 
     Scene scene;
-    
 			
-    Engine::Get().GetAudio().PlaySound("background");
-
-    
+    Engine::Get().GetAudio().PlaySound("background");  
 
     vector<Vector2> mouseLinePoints;   
    
@@ -83,24 +78,20 @@ int main() {
 
         if (Engine::Get().GetInput().GetButtonDown(Input::MouseButton::Right)) {
             if (!mouseLinePoints.empty())mouseLinePoints.pop_back();
-		}
-
-        
+		} 
 
         //Render
         Engine::Get().GetRenderer().SetColor(0.0f, 0.0f, 0.0f);
         Engine::Get().GetRenderer().Clear();
 
-        
-       
+            
         game.Draw(Engine::Get().GetRenderer());
 
         for (int i = 0; i < (int)mouseLinePoints.size() - 1; i++) {
             Engine::Get().GetRenderer().SetColor(1.0f, 1.0f, 1.0f);
             Engine::Get().GetRenderer().DrawLine(mouseLinePoints[i].x, mouseLinePoints[i].y, mouseLinePoints[i + 1].x, mouseLinePoints[i + 1].y);
         }
-       
-        
+               
         Engine::Get().GetRenderer().Present();
     }
     game.Shutdown();

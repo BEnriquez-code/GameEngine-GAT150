@@ -2,6 +2,8 @@
 #include "Scene.h"
 #include "Actor.h"
 #include "Factory.h"
+#include <ColliderComponent.h>
+
 
 namespace nu {
 
@@ -37,9 +39,8 @@ namespace nu {
 
 
 					if (prototype) {
-						std::string name;
-						JSON_READ(actorValue, name);
-						Factory::Instance().RegisterPrototype<Actor>("PlayerPrototype", std::move(actor));
+						std::string name = actor->GetName();
+						Factory::Instance().RegisterPrototype<Actor>(name, std::move(actor));
 					}
 					else {
 						AddActor(std::move(actor));
@@ -70,7 +71,7 @@ namespace nu {
 		}
 
 
-		//m_actors.insert(m_actors.end(), m_pendingActors.begin(), m_pendingActors.end());
+		m_actors.insert(m_actors.end(), m_pendingActors.begin(), m_pendingActors.end());
 		m_pendingActors.clear();
 	}
 	void Scene::Draw(const class Renderer& renderer) {
@@ -83,10 +84,14 @@ namespace nu {
 	void Scene::UpdateCollisions() {
 		for (auto& actorA : m_actors) {
 			for (auto& actorB : m_actors) {
-				if (actorA == actorB) continue;
+				if (actorA == actorB || actorA->m_destroyed || actorB->m_destroyed) continue;
 
-				float distance = (actorA->GetTransform().position - actorB->GetTransform().position).Length();
-				if (distance <= actorA->GetRadius() * actorB->GetRadius()) {
+				auto colliderA = actorA->GetComponent<ColliderComponent>();
+				auto colliderB = actorB->GetComponent<ColliderComponent>();
+
+				if (!colliderA || !colliderB)continue;
+
+				if (colliderA->CheckCollision(*colliderB)) {
 					actorA->OnCollision(actorB.get());
 					actorB->OnCollision(actorA.get());
 				}

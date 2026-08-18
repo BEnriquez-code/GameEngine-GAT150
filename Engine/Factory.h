@@ -14,7 +14,7 @@
     public:                                                         \
         Register##classname()                                       \
         {                                                           \
-            nu::Factory::Instance().Register<classname>(#classname);    \
+            nu::Factory::Instance().Register<classname>(#classname);\
         }                                                           \
     };                                                              \
     static Register##classname registerInstance;
@@ -71,7 +71,6 @@ namespace nu {
         requires std::derived_from<T, Object>
     inline void Factory::Register(const std::string& name) {
 
-        //std::string lowerName = ToLower(name);
 
         if (m_registry.contains(name)) {
             std::cerr << "Object already registered: " << name << std::endl;
@@ -83,40 +82,36 @@ namespace nu {
     template<typename T>
         requires std::derived_from<T, Object>
     inline void Factory::RegisterPrototype(const std::string& name, std::unique_ptr<T> prototype){
-        //std::string lowerName = ToLower(name);
 
         if (m_registry.contains(name)) {
-            std::cerr << "Object already registered: " << name << std::endl;
+            std::cerr << "Object already registered prototype: " << name << std::endl;
             return;
         }
-        m_registry[name] = std::make_unique<PrototypeCreator<T>>(std::move(prototype));
+        m_registry[std::move(name)] = std::make_unique<PrototypeCreator<T>>(std::move(prototype));
     }
 
     template<typename T>
         requires std::derived_from<T, Object>
-    inline std::unique_ptr<T> Factory::Create(const std::string& name)
-    {
-        //std::string lowerName = ToLower(name);
-
-        if (!m_registry.contains(name)) {
-            std::cerr << "Object not registered: " << name << std::endl;
-            return std::unique_ptr<T>();
-        }
+    inline std::unique_ptr<T> Factory::Create(const std::string& name){
 
         auto iter = m_registry.find(name);
+        if (iter == m_registry.end()) {
+            std::cerr << "Object not registered: " << name << std::endl;
+            return nullptr;
+        }
 
         //create unique pointer to object
         auto object = iter->second->Create();
 
         //check if object is derived from T
-        T* derived = dynamic_cast<T*>(object.get());
-        if (derived) {
+        if (T* derived = dynamic_cast<T*>(object.get())) {
             //release unique pointer ownership
             object.release();
             //create new unique pointer wiht derived pointer
             return std::unique_ptr<T>(derived);
         }
-        return std::unique_ptr<T>();
+        std::cerr << "Object " << name << " failed to dynamiclly cast" << std::endl;
+        return nullptr;
     }
 
 }

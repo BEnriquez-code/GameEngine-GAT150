@@ -1,15 +1,14 @@
 {
     "actors": [
         {
-            "name": "Player",
+            "name": "PlayerPrototype",
             "tag": "Player",
             "type": "Player",
-            "prototype": false,
+            "prototype": true,
             "active": true,
             "damping": 2.0,
             "speed": 250.0,
             "velocity": [ 0.0, 0.0 ],
-            "texture": "Textures/player.png",
             "transform": {
                 "position": [ 640.0, 512.0 ],
                 "rotation": 0.0,
@@ -19,27 +18,49 @@
                 {
                     "type": "SpriteRendererComponent",
                     "texture": "Textures/player.png"
+                },
+                {
+                    "type": "CircleColliderComponent",
+                    "radius": 64.0
                 }
             ]
         },
         {
-            "name": "Enemy",
+            "name": "EnemyPrototype",
             "tag": "Enemy",
             "type": "Enemy",
-            "prototype": false,
+            "prototype": true,
             "active": true,
             "damping": 300.0,
             "speed": 100.0,
-            "texture": "Textures/enemy.png"
+            "components": [
+                {
+                    "type": "SpriteRendererComponent",
+                    "texture": "Textures/enemy.png"
+                },
+                {
+                    "type": "CircleColliderComponent",
+                    "radius": 64.0
+                }
+            ]
         },
         {
-            "name": "Bullet",
+            "name": "BulletPrototype",
             "tag": "PlayerBullet",
             "type": "Bullet",
-            "prototype": false,
+            "prototype": true,
             "lifespan": 2.0,
-            "texture": "Textures/bullet.png",
-            "speed": 1000.0
+            "speed": 1000.0,
+            "components": [
+                {
+                    "type": "SpriteRendererComponent",
+                    "texture": "Textures/bullet.png"
+                },
+                {
+                    "type": "CircleColliderComponent",
+                    "radius": 24.0
+                }
+            ]
         }
     ]
 

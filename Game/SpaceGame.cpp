@@ -16,7 +16,6 @@ bool SpaceGame::Initialize() {
 	m_scene->SetGame(this);
 	m_scene->Load("Data/scene.json");
 
-	
 
 	m_backgroundTexture = Resources().Get<Texture>("Textures/background.png", Engine::Get().GetRenderer());
 	
@@ -87,9 +86,9 @@ void SpaceGame::Update(float dt, const std::vector<nu::Vector2>& mousePoints) {
 				SpawnEnemy();
 			}
 
-			if (m_scene->GetActorByName<Player>("Player") == nullptr) {
+			/*if (m_scene->GetActorByName<Player>("PlayerPrototype") == nullptr) {
 				OnPlayerDead();
-			}
+			}*/
 
 
 			CheckLineCollisions(mousePoints);
@@ -209,41 +208,11 @@ void SpaceGame::AddKillStreakPoints(int basePoints) {
 void SpaceGame::SpawnPlayer() {
 	auto player = Factory::Instance().Create<Actor>("Player");
 	m_scene->AddActor(std::move(player));
-
-
-
-	//PlayerDesc playerDesc;
-	//playerDesc.name = "Player";
-	//playerDesc.tag = "Player";
-	////playerDesc.model = assets::playerModel;
-	//playerDesc.texture = Resources().Get<Texture>("Textures/player.png", Engine::Get().GetRenderer());
-	//playerDesc.transform = Transform{ Vector2 { 640.0f, 512.0f }, 0.0f, 15.0f };
-	//playerDesc.velocity = Vector2{ 0.0f, 0.0f };
-	//playerDesc.damping = 2.0f;
-	//playerDesc.speed = 250.0f;
-
-
-	//std::unique_ptr<Player> player = std::make_unique<Player>(playerDesc);
-	//m_scene->AddActor(std::move(player));
 }
 
 void SpaceGame::SpawnEnemy() {
 	auto enemy = Factory::Instance().Create<Actor>("Enemy");
 	m_scene->AddActor(std::move(enemy));
-
-
-	//EnemyDesc enemyDesc;
-	//enemyDesc.name = "Enemy";
-	//enemyDesc.tag = "Enemy";
-	////enemyDesc.model = assets::enemyModel;
-	//enemyDesc.texture = Resources().Get<Texture>("Textures/enemy.png", Engine::Get().GetRenderer());
-	//enemyDesc.transform = Transform{ Vector2{RandomFloat((float)Engine::Get().GetRenderer().GetWidth()), RandomFloat((float)Engine::Get().GetRenderer().GetHeight())}, 90.0f, 10.0f };
-	//enemyDesc.damping = 300.0f;
-	//enemyDesc.speed = RandomFloat(100.0f, 150.0f);
-
-
-	//m_scene->AddActor(std::move(std::make_unique<Enemy>(enemyDesc)));
-	//
 }
 
 void SpaceGame::Shutdown() {

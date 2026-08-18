@@ -43,16 +43,16 @@ void Player::Update(float dt) {
     AddVelocity(velocity * dt);
 
     if (nu::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_SPACE)) {
-        BulletDesc bulletDesc;
-        bulletDesc.name = "Bullet";
-        bulletDesc.tag = "PlayerBullet";
-        //bulletDesc.model = assets::bulletModel;
-		bulletDesc.texture = nu::Resources().Get<nu::Texture>("Textures/bullet.png", nu::Engine::Get().GetRenderer());
-        bulletDesc.transform = m_transform;
-        bulletDesc.speed = 1000.0f;
-        bulletDesc.lifespan = 2.0f;
 
-        m_scene->AddActor(std::make_unique<Bullet>(bulletDesc));
+        auto bullet = nu::Factory::Instance().Create<Bullet>("BulletPrototype");
+        if (!bullet) {
+            std::cerr << "Failed to Instantiate BulletPrototype" << std::endl;
+            return;
+        }
+        bullet->SetTransform(m_transform);
+        bullet->SetScale(2.0f);
+
+        m_scene->AddActor(std::move(bullet));
 
     }
 

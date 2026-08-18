@@ -7,8 +7,22 @@
 #include "ResourceManager.h"
 #include "Components/RendererComponent.h"
 
+
 namespace nu {
     FACTORY_REGISTER(Actor)
+
+    Actor::Actor(const Actor& other):
+        Object{other},
+        m_tag{other.m_tag},
+        m_transform{other.m_transform},
+        m_damping{other.m_damping},
+        m_lifespan{other.m_lifespan}
+    {
+        //clone all components
+        for (const auto& component : other.m_components) {
+            auto clone = std::unique_ptr<Component>(dynamic_cast<Component*>(component->Clone().release()));
+        }
+    }
 
     void Actor::Update(float dt) {
 
@@ -19,15 +33,15 @@ namespace nu {
         m_transform.position.x = math::Wrap(0.0f, 1920.0f, m_transform.position.x);
         m_transform.position.y = math::Wrap(0.0f, 1024.0f, m_transform.position.y);
 
-        for (auto component : m_components) {
+        for (auto& component : m_components) {
             component->Update(dt);
         }
 
     }
     void Actor::Draw(const Renderer& render) const {
 
-        for (auto component : m_components) {
-            auto rendererComponent = dynamic_cast<RendererComponent*>(component);
+        for (auto& component : m_components) {
+            auto rendererComponent = dynamic_cast<RendererComponent*>(component.get());
             if (rendererComponent) {
                rendererComponent->Draw(render);
             }
@@ -56,7 +70,7 @@ namespace nu {
 
         //read actor components
         if (JSON_HAS_NAME(value, "components")) {
-            for (auto& componentValue : JSON_GET_NAME(value, "component").GetArray()) {
+            for (auto& componentValue : JSON_GET_NAME(value, "components").GetArray()) {
 
 
                 std::string typeName;
@@ -66,10 +80,16 @@ namespace nu {
 
                 if (component) {
                     component->Read(componentValue);
+                    AddComponent(std::move(component));
                 }
             }
         }
 
+    }
+
+    void Actor::AddComponent(std::unique_ptr<Component> component){
+        component->SetOwner(this);
+        m_components.push_back(std::move(component));
     }
 
 }
