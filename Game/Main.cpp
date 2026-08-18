@@ -22,31 +22,8 @@ using namespace nu;
 int main() {
     SetWorkingDirectory("Assets");
     
-    Factory::Instance().Register<Actor>("Actor");
-    Factory::Instance().Register<Object>("Object");
-    Factory::Instance().Register<Player>("Player");
-    Factory::Instance().Register<Enemy>("Enemy");
-    Factory::Instance().Register<Bullet>("Bullet");
 
-    /*
-    auto actor = Factory::Instance().Create<Actor>("Actor");
-    cout << actor->IsActive() << endl;
-    
-    auto object = Factory::Instance().Create("Object");
-    cout << object->IsActive() << endl;
-
-    json::document_t document;
-    if (json::Load("Data/scene.json", document)) {
-        actor->Read(document);
-        cout << actor->GetName() << endl;
-        cout << actor->GetTag() << endl;
-
-        cout << actor->GetTransform().rotation << endl;
-    }
-    */
-    //return 0;
-
-
+   
     //Intialization
     Engine::Get().Initialize();
 

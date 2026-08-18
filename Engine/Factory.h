@@ -6,6 +6,19 @@
 #include <iostream>
 #include <map>
 #include <memory>
+
+
+#define FACTORY_REGISTER(classname)                                 \
+    class Register##classname                                       \
+    {                                                               \
+    public:                                                         \
+        Register##classname()                                       \
+        {                                                           \
+            nu::Factory::Instance().Register<classname>(#classname);    \
+        }                                                           \
+    };                                                              \
+    static Register##classname registerInstance;
+
 namespace nu {
     class ICreator {
     public:

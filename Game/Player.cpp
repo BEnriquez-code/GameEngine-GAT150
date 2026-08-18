@@ -4,7 +4,10 @@
 #include "Assets.h"
 #include "Renderer.h"
 #include "Engine.h"
+#include "Factory.h"
 #include <iostream>
+
+FACTORY_REGISTER(Player)
 
 void Player::Update(float dt) {
     float thrust = 0.0f;
@@ -79,7 +82,8 @@ void Player::Draw(const nu::Renderer& renderer) const {
 
 void Player::OnCollision(Actor* other) {
    if (other->GetTag() == "Enemy") {
+       std::cout << "Player destrooyed" << std::endl;
        SetDestroyed();
-       other->SetDestroyed();
+        other->SetDestroyed();
    }
 }

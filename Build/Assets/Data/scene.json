@@ -14,7 +14,13 @@
                 "position": [ 640.0, 512.0 ],
                 "rotation": 0.0,
                 "scale": 15.0
-            }
+            },
+            "components": [
+                {
+                    "type": "SpriteRendererComponent",
+                    "texture": "Textures/player.png"
+                }
+            ]
         },
         {
             "name": "Enemy",
