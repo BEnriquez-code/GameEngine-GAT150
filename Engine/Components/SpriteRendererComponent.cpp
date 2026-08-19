@@ -3,6 +3,8 @@
 #include "ResourceManager.h"
 #include "Engine.h"
 
+#include <iostream>
+
 namespace nu {
 	FACTORY_REGISTER(SpriteRendererComponent)
 
@@ -14,7 +16,7 @@ namespace nu {
 				GetOwner()->GetTransform().position.y,
 				GetOwner()->GetTransform().rotation,
 				GetOwner()->GetTransform().scale);
-		}
+		}	
 	}
 
 	void SpriteRendererComponent::Read(const json::value_t& value){
@@ -23,6 +25,9 @@ namespace nu {
 		JSON_READ_NAME(value, "texture", textureName);
 		if (!textureName.empty()) {
 			m_texture = Resources().Get<Texture>(textureName, Engine::Get().GetRenderer());
+			if (!m_texture) {
+				std::cerr << "Failed to Load texture: " << textureName << std::endl;
+			}
 		}
 
 	}

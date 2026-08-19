@@ -21,6 +21,9 @@ namespace nu {
         //clone all components
         for (const auto& component : other.m_components) {
             auto clone = std::unique_ptr<Component>(dynamic_cast<Component*>(component->Clone().release()));
+            if (clone) {
+                AddComponent(std::move(clone)); 
+            }
         }
     }
 

@@ -18,7 +18,7 @@ namespace nu {
 
 	bool Scene::Load(const std::string& sceneName){
 		json::document_t document;
-		if (json::Load("Data/scene.json", document)) {
+		if (json::Load(sceneName, document)) {
 			if (JSON_HAS_NAME(document, "actors")) {
 				for (auto& actorValue : document["actors"].GetArray()) {
 
@@ -71,7 +71,7 @@ namespace nu {
 		}
 
 
-		m_actors.insert(m_actors.end(), m_pendingActors.begin(), m_pendingActors.end());
+	
 		m_pendingActors.clear();
 	}
 	void Scene::Draw(const class Renderer& renderer) {

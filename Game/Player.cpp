@@ -72,7 +72,6 @@ void Player::Update(float dt) {
     
     Actor::Update(dt);
 
-    
 }
 
 
@@ -84,6 +83,6 @@ void Player::OnCollision(Actor* other) {
    if (other->GetTag() == "Enemy") {
        std::cout << "Player destrooyed" << std::endl;
        SetDestroyed();
-        other->SetDestroyed();
+       other->SetDestroyed();
    }
 }

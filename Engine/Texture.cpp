@@ -15,7 +15,6 @@ namespace nu{
         SDL_Surface* surface = IMG_Load(filename.c_str());
         if (!surface)
         {
-           
             std::cerr << "Could not load image: " << filename << std::endl;
             return false;
         }

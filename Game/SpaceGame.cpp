@@ -206,12 +206,12 @@ void SpaceGame::AddKillStreakPoints(int basePoints) {
 }
 
 void SpaceGame::SpawnPlayer() {
-	auto player = Factory::Instance().Create<Actor>("Player");
+	auto player = Factory::Instance().Create<Actor>("PlayerPrototype");
 	m_scene->AddActor(std::move(player));
 }
 
 void SpaceGame::SpawnEnemy() {
-	auto enemy = Factory::Instance().Create<Actor>("Enemy");
+	auto enemy = Factory::Instance().Create<Actor>("EnemyPrototype");
 	m_scene->AddActor(std::move(enemy));
 }
 
