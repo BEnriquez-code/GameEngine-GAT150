@@ -2,6 +2,7 @@
 #include "SpriteRendererComponent.h"
 #include "ResourceManager.h"
 #include "Engine.h"
+#include "Scene.h"
 
 #include <iostream>
 
@@ -31,6 +32,11 @@ namespace nu {
 		}
 
 	}
+
+
+    void SpriteRendererComponent::Update(float dt){
+     
+    }
 
 	
 }

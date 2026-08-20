@@ -86,9 +86,9 @@ void SpaceGame::Update(float dt, const std::vector<nu::Vector2>& mousePoints) {
 				SpawnEnemy();
 			}
 
-			/*if (m_scene->GetActorByName<Player>("PlayerPrototype") == nullptr) {
+			if (m_scene->FindByTag<Player>("Player") == nullptr) {
 				OnPlayerDead();
-			}*/
+			}
 
 
 			CheckLineCollisions(mousePoints);

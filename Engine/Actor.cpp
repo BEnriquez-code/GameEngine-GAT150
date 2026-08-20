@@ -54,7 +54,6 @@ namespace nu {
 
     float Actor::GetRadius() const {
    
-
 	   return 0.0f;
     }
 

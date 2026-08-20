@@ -59,7 +59,6 @@ int main() {
         Engine::Get().Update();
        
         game.Update(Engine::Get().GetTime().GetDeltaTime(), mouseLinePoints);
-        scene.Update(Engine::Get().GetTime().GetDeltaTime());
 
         if (Engine::Get().GetInput().GetButtonDown(Input::MouseButton::Left)) {
 			Vector2 v = Engine::Get().GetInput().GetMousePosition();

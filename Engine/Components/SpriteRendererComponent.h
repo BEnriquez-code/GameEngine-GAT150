@@ -9,6 +9,8 @@ namespace nu {
 		void Draw(const Renderer& renderer) override;
 
 		void Read(const json::value_t& value) override;
+
+		void Update(float dt) override;
 	protected:
 		res_t<Texture> m_texture;
 	};

@@ -10,7 +10,7 @@
 FACTORY_REGISTER(Enemy)
 
 void Enemy::Update(float dt) {
-	Player* player = m_scene->GetActorByName<Player>("PlayerPrototype");
+	Player* player = m_scene->FindByTag<Player>("Player");
 	if (player) {
 		nu::Vector2 direction = player->GetTransform().position - m_transform.position;
 

@@ -20,6 +20,9 @@ namespace nu{
 		template<typename T>
 		T* GetActorByName(const std::string& name);
 
+		template<typename T>
+		T* FindByTag(const std::string& tag);
+
 		void SetGame(class Game* game) { m_game = game; };
 		class Game* GetGame() { return m_game; };
 
@@ -41,6 +44,18 @@ namespace nu{
 			}
 		}
 
+		return nullptr;
+	}
+
+	template<typename T>
+	inline T* Scene::FindByTag(const std::string& tag) {
+		for (auto& actor : m_actors) {
+			if (actor->GetTag() == tag) {
+				if (T* result = dynamic_cast<T*>(actor.get())) {
+					return result;
+				}
+			}
+		}
 		return nullptr;
 	}
 }	
