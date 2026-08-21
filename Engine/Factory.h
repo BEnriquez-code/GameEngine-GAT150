@@ -77,6 +77,7 @@ namespace nu {
             return;
         }
         m_registry[name] = std::make_unique<Creator<T>>();
+        std::cout << "success: registered object " << name << std::endl;
     }
 
     template<typename T>
@@ -88,7 +89,9 @@ namespace nu {
             return;
         }
         m_registry[std::move(name)] = std::make_unique<PrototypeCreator<T>>(std::move(prototype));
+        std::cout << "success: registered prototype " << name << std::endl;
     }
+
 
     template<typename T>
         requires std::derived_from<T, Object>
@@ -107,6 +110,8 @@ namespace nu {
         if (T* derived = dynamic_cast<T*>(object.get())) {
             //release unique pointer ownership
             object.release();
+            std::cout << "success: created object " << name << std::endl;
+
             //create new unique pointer wiht derived pointer
             return std::unique_ptr<T>(derived);
         }
