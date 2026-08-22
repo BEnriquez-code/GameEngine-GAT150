@@ -185,5 +185,8 @@
     <ClCompile Include="Components\SpriteRendererComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="Physics.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
