@@ -21,6 +21,7 @@
 #include "ParticleSystem.h"
 #include "Texture.h"
 #include "Json.h"
+#include "Physics.h"
 
 
 //framework
@@ -41,6 +42,7 @@ namespace nu {
 		Renderer& GetRenderer() { return m_renderer; };
 		Audio& GetAudio() { return m_audio; };
 		Time& GetTime() { return m_time; };
+		Physics& GetPhysics() { return m_physics; }
 
 		ParticleSystem& GetPS() { return m_particleSystem; }
 
@@ -54,6 +56,7 @@ namespace nu {
 		Input m_input;
 		Renderer m_renderer;
 		Audio m_audio;
+		Physics m_physics;
 
 		Time m_time;
 		ParticleSystem m_particleSystem;

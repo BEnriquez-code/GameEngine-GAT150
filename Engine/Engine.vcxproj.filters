@@ -16,6 +16,9 @@
     <Filter Include="Components">
       <UniqueIdentifier>{f50fc3e6-eb14-48a4-a3ab-993024bd13e4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Physics">
+      <UniqueIdentifier>{5629c576-aa1f-4332-a304-1cfe9cafb8cc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -119,6 +122,9 @@
     </ClInclude>
     <ClInclude Include="Component.h">
       <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics.h">
+      <Filter>Physics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
