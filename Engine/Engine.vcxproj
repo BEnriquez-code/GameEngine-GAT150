@@ -200,7 +200,6 @@
     <ClInclude Include="Physics.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Rect.h" />
-    <ClInclude Include="Renderer.h" />
     <ClInclude Include="Renderer\TextureFrames.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceManager.h" />
@@ -236,9 +235,13 @@
     </ClCompile>
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Renderer\TextureFrames.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Texture.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Build\Assets\Animations\bat_idle.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

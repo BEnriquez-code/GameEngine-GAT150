@@ -35,7 +35,7 @@ namespace nu{
 
 		Vector2 textureSize = m_texture->GetSize();
 
-		m_frameSize = textureSize / Vector2{ m_numColumns, m_numRows };
+		m_frameSize = textureSize / Vector2{ static_cast<float>(m_numColumns), static_cast<float>(m_numRows) };
 
 		return true;
 	}
