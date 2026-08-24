@@ -1,6 +1,28 @@
 {
     "actors": [
         {
+            "type": "Actor",
+            "prototype": false,
+            "name": "Bat",
+            "tag": "Enemy",
+            "active": true,
+            "transform": {
+                "position": [ 200.0, 200.0 ],
+                "rotation": 0.0,
+                "scale": 3.0
+            },
+            "components": [
+                {
+                    "type": "SpriteRendererComponent",
+                    "texture": "Textures/player.png"
+                },
+                {
+                    "type": "CircleColliderComponent",
+                    "radius": 64.0
+                }
+            ]
+        },
+        {
             "name": "PlayerPrototype",
             "tag": "Player",
             "type": "Player",

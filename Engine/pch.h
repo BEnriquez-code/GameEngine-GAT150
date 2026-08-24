@@ -9,5 +9,19 @@
 
 // add headers that you want to pre-compile here
 #include "framework.h"
+#include <vector>
+#include <list>
+#include <map>
+#include <iostream>
+#include <sstream>
+#include <fstream>
+#include <memory>
+#include <algorithm>
+
+//Third Party Includes
+#include <SDL3/SDL.h>
+#include <SDL3_image/SDL_image.h>
+#include <SDL3_ttf/SDL_ttf.h>
+#include <fmod.hpp>
 
 #endif //PCH_H

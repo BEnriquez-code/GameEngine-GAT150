@@ -19,6 +19,30 @@
     <Filter Include="Physics">
       <UniqueIdentifier>{5629c576-aa1f-4332-a304-1cfe9cafb8cc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{25291417-1958-42b9-91ec-4a466c6b9860}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{69b178cb-2935-4782-b63b-c5d8012d6d44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{edbc8b85-c8f7-4090-b361-b5634decab15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{21632ad2-521e-43d2-b180-90dfcf0d2fd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Audio">
+      <UniqueIdentifier>{4f064588-82d3-4a7b-9754-dc2cdbe10f6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input">
+      <UniqueIdentifier>{667ea814-4586-4af2-84a7-1ea2a4fbcef5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Serialization">
+      <UniqueIdentifier>{e91bdaeb-b1a3-4795-b46d-226c4462dc1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{0dbee83c-bc6c-4f93-a1d3-6e1e76dfbec1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -125,6 +149,12 @@
     </ClInclude>
     <ClInclude Include="Physics.h">
       <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Rect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\TextureFrames.h">
+      <Filter>Renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

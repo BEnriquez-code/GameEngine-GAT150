@@ -169,7 +169,7 @@ void SpaceGame::CheckLineCollisions(const std::vector<Vector2>& mousePoints) {
 			// Check collision for both Enemies and Bullets
 			if (actor->GetTag() == "Enemy" || actor->GetTag() == "PlayerBullet") {
 				Vector2 pos = actor->GetTransform().position;
-				float radius = actor->GetRadius(); // Adjust based on actor's radius/size getter
+				float radius = actor->GetRadius(); // TODO FIX actor->GetRadius to SpriteRenderComponent
 
 				if (PointToLineSegDistance(p1, p2, pos) <= radius * 8.0f) {
 					// Collision action:
