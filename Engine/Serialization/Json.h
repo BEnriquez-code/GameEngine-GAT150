@@ -24,6 +24,7 @@ namespace nu::json {
 
 	//read json data
 	bool Read(const value_t& value, const std::string& name, int& data);
+	bool Read(const value_t& value, const std::string& name, unsigned int& data);
 	bool Read(const value_t& value, const std::string& name, float& data);
 	bool Read(const value_t& value, const std::string& name, bool& data);
 	bool Read(const value_t& value, const std::string& name, std::string& data);

@@ -7,18 +7,14 @@
             "tag": "Enemy",
             "active": true,
             "transform": {
-                "position": [ 200.0, 200.0 ],
+                "position": [ 640.0, 512.0 ],
                 "rotation": 0.0,
-                "scale": 3.0
+                "scale": 15.0
             },
             "components": [
                 {
-                    "type": "SpriteRendererComponent",
-                    "texture": "Textures/player.png"
-                },
-                {
-                    "type": "CircleColliderComponent",
-                    "radius": 64.0
+                    "type": "SpriteAnimationRendererComponent",
+                    "texture_frames": "Animation/bat_idle.json"
                 }
             ]
         },
@@ -34,7 +30,7 @@
             "transform": {
                 "position": [ 640.0, 512.0 ],
                 "rotation": 0.0,
-                "scale": 15.0
+                "scale": 3.0
             },
             "components": [
                 {

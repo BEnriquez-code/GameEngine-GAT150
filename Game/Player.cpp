@@ -81,7 +81,7 @@ void Player::Draw(const nu::Renderer& renderer) const {
 
 void Player::OnCollision(Actor* other) {
    if (other->GetTag() == "Enemy") {
-       std::cout << "Player destrooyed" << std::endl;
+       std::cout << "Player destroyed" << std::endl;
        SetDestroyed();
        other->SetDestroyed();
    }
