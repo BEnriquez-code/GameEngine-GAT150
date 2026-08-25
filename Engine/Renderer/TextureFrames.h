@@ -1,7 +1,7 @@
 #pragma once
 #include "ResourceManager.h"
-#include "Vector2.h"
-#include "Rect.h"
+#include "Math/Vector2.h"
+#include "Math/Rect.h"
 #include <string>
 namespace nu {
 	class TextureFrames : public Resource {

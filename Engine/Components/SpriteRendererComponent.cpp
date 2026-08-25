@@ -1,8 +1,8 @@
 #include "pch.h"
 #include "SpriteRendererComponent.h"
-#include "ResourceManager.h"
+#include "Resources/ResourceManager.h"
 #include "Engine.h"
-#include "Scene.h"
+#include "Framework/Scene.h"
 
 #include <iostream>
 

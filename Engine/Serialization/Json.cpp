@@ -1,6 +1,6 @@
 #include "pch.h"
-#include "Json.h"
-#include "File.h"
+#include "Serialization/Json.h"
+#include "Core/File.h"
 
 #include <rapidjson/error/en.h>
 #include <rapidjson/istreamwrapper.h>

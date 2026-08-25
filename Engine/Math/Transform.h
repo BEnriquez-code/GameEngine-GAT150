@@ -1,6 +1,6 @@
 #pragma once
-#include "Vector2.h"
-#include "Json.h"
+#include "Math/Vector2.h"
+#include "Serialization/Json.h"
 namespace nu {
     struct Transform {
         Vector2 position{0.0f, 0.0f};

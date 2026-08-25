@@ -1,10 +1,10 @@
 #include "pch.h"
 #include "Actor.h"
-#include "Renderer.h"
-#include "Texture.h"
-#include "MathUtils.h"
+#include "Renderer/Renderer.h"
+#include "Renderer/Texture.h"
+#include "Math/MathUtils.h"
 #include "Engine.h"
-#include "ResourceManager.h"
+#include "Resources/ResourceManager.h"
 #include "Components/RendererComponent.h"
 
 

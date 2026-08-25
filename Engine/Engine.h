@@ -1,33 +1,33 @@
 #pragma once
-#include "Random.h"
-#include "Vector2.h"
-#include "Vector3.h"
-#include "MathUtils.h"
-#include "Transform.h"
+#include "Core/Random.h"
+#include "Math/Vector2.h"
+#include "Math/Vector3.h"
+#include "Math/MathUtils.h"
+#include "Math/Transform.h"
 #include <fmod.hpp>
-#include "StringUtils.h"
+#include "Core/StringUtils.h"
 
-#include "Factory.h"
+#include "Core/Factory.h"
 
-#include "Text.h"
+#include "Renderer/Text.h"
 
 
 // systems
-#include "File.h"
-#include "Renderer.h"
-#include "Input.h"
-#include "GameTime.h"
-#include "Audio.h"
-#include "ParticleSystem.h"
-#include "Texture.h"
-#include "Json.h"
-#include "Physics.h"
+#include "Core/File.h"
+#include "Renderer/Renderer.h"
+#include "Input/Input.h"
+#include "Core/GameTime.h"
+#include "Audio/Audio.h"
+#include "Renderer/ParticleSystem.h"
+#include "Renderer/Texture.h"
+#include "Serialization/Json.h"
+#include "Physics/Physics.h"
 
 
 //framework
-#include "Game.h"
-#include "Actor.h"
-#include "Scene.h"
+#include "Framework/Game.h"
+#include "Framework/Actor.h"
+#include "Framework/Scene.h"
 
 namespace nu {
 	class Engine {

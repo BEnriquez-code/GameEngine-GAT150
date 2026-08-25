@@ -1,10 +1,10 @@
 #include "Player.h"
-#include "ResourceManager.h"
+#include "Resources/ResourceManager.h"
 #include "Bullet.h"
 #include "Assets.h"
-#include "Renderer.h"
+#include "Renderer/Renderer.h"
 #include "Engine.h"
-#include "Factory.h"
+#include "Core/Factory.h"
 #include <iostream>
 
 FACTORY_REGISTER(Player)

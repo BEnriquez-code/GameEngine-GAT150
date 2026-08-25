@@ -1,9 +1,9 @@
 #pragma once
-#include "Game.h"
-#include "Vector2.h"
-#include "Text.h"
-#include "Texture.h"
-#include "ResourceManager.h"
+#include "Framework/Game.h"
+#include "Math/Vector2.h"
+#include "Renderer/Text.h"
+#include "Renderer/Texture.h"
+#include "Resources/ResourceManager.h"
 
 #include <vector>
 
