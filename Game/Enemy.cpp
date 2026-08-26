@@ -4,6 +4,7 @@
 #include "Engine.h"
 #include "SpaceGame.h"
 #include "Core/Factory.h"
+#include "Components/PhysicsComponent.h"
 
 #include <iostream>
 
@@ -17,19 +18,26 @@ void Enemy::Update(float dt) {
 		float angle = direction.Angle();
 		SetRotation(angle * nu::math::RadToDeg);
 
-		nu::Vector2 forward{ 1, 0 };
+		nu::PhysicsComponent* physicsComponent = GetComponent<nu::PhysicsComponent>();
+		if (physicsComponent) {
+			nu::Vector2 forward{ 1, 0 }; // ->
+			nu::Vector2 force = forward.Rotate(m_transform.rotation * nu::math::DegToRad) * m_speed;
 
-		forward = forward.Rotate(m_transform.rotation * nu::math::DegToRad);
-		AddVelocity(forward * m_speed * dt);
+			physicsComponent->ApplyForce(force);
+
+			nu::Vector2 direction = player->GetTransform().position - m_transform.position;
+			float rotation = direction.Angle();
+			physicsComponent->SetRotation(rotation * nu::math::RadToDeg);
+		}
 	}
 
-	float thrust = 0.0f;
+	//float thrust = 0.0f;
 
-	float rotate = 0.0f;
+	//float rotate = 0.0f;
 
-	nu::Vector2 forward{ 1, 0 }; // ->
-	nu::Vector2 velocity = forward.Rotate(m_transform.rotation * nu::math::DegToRad) * thrust;
-	AddVelocity(velocity * dt);
+	//nu::Vector2 forward{ 1, 0 }; // ->
+	//nu::Vector2 velocity = forward.Rotate(m_transform.rotation * nu::math::DegToRad) * thrust;
+	//AddVelocity(velocity * dt);
 
 	Actor::Update(dt);
 }

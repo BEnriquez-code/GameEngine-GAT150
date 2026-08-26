@@ -175,7 +175,7 @@ void SpaceGame::CheckLineCollisions(const std::vector<Vector2>& mousePoints) {
 					// Collision action:
 					if (actor->GetTag() == "Enemy" || actor->GetTag() == "PlayerBullet") {
 						Vector2 pushDir = (pos - (p1 + p2) * 0.5f).Normalized();
-						actor->SetVelocity(pushDir * 300.0f);
+						//actor->SetVelocity(pushDir * 300.0f);
 					}
 				}
 			}

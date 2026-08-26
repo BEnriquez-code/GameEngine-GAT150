@@ -5,6 +5,7 @@
 #include "Renderer/Renderer.h"
 #include "Engine.h"
 #include "Core/Factory.h"
+#include "Components/PhysicsComponent.h"
 #include <iostream>
 
 FACTORY_REGISTER(Player)
@@ -13,19 +14,13 @@ void Player::Update(float dt) {
     float thrust = 0.0f;
     float rotate = 0.0f;
 
-    if (nu::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_4)) nu::Engine::Get().GetAudio().PlaySound("test");
-    if (nu::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_1)) nu::Engine::Get().GetAudio().PlaySound("mario");
-    if (nu::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_2)) nu::Engine::Get().GetAudio().PlaySound("bass");
-    if (nu::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_3)) nu::Engine::Get().GetAudio().PlaySound("hee-hee");
-    if (nu::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_6)) nu::Engine::Get().GetAudio().PlaySound("thrust");
-
    
     if (nu::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_A)) {
-        rotate = -180.0f;
+        rotate = -400.0f;
         
     }
     if (nu::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_D)) { 
-        rotate = +180.0f; 
+        rotate = +400.0f; 
     }
 
     if (nu::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_W)) { 
@@ -35,12 +30,19 @@ void Player::Update(float dt) {
         thrust = -m_speed; 
     }
 
+    nu::PhysicsComponent* physicsComponent = GetComponent<nu::PhysicsComponent>();
+    if (physicsComponent) {
+        nu::Vector2 forward{ 1, 0 }; // ->
+        nu::Vector2 force = forward.Rotate(m_transform.rotation * nu::math::DegToRad) * thrust;
+
+        physicsComponent->ApplyForce(force);
+        physicsComponent->ApplyTorque(rotate);
+    }
+
     SetRotation(m_transform.rotation + rotate * dt);
 
 
-    nu::Vector2 forward{ 1, 0 }; // ->
-    nu::Vector2 velocity = forward.Rotate(m_transform.rotation * nu::math::DegToRad) * thrust;
-    AddVelocity(velocity * dt);
+    //AddVelocity(velocity * dt);
 
     if (nu::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_SPACE)) {
 

@@ -11,18 +11,26 @@ namespace nu {
 
 
 	void SpriteAnimationRendererComponent::Update(float dt) {
+		if (!m_textureFrames)return;
+		unsigned total = m_textureFrames->GetTotalFrames();
+		if (total == 0)return;
+
 		m_frameTimer += dt;
-		float frameTime = 1.0f / m_framesPerSecond;
+		float frameTime = 0.1f / m_framesPerSecond;
 		while (m_frameTimer >= frameTime) {
-			m_frame++;
-			if(m_loop){
-				m_frame = m_frame % m_textureFrames->GetTotalFrames();
-			}
-			else {
-				m_frame = math::Clamp(0u, m_textureFrames->GetTotalFrames() - 1, m_frame);
-			}
-			
 			m_frameTimer -= frameTime;
+			m_frame++;
+			
+			if (m_frame >= total) {
+				if (m_loop) {
+					m_frame = m_frame % total;
+				}
+				else {
+					m_frame = total - 1;
+					m_frameTimer = 0;
+					break;
+				}
+			}
 		}
 	}
 
@@ -40,13 +48,13 @@ namespace nu {
 	void SpriteAnimationRendererComponent::Read(const json::value_t& value) {
 		RendererComponent::Read(value);
 
-		JSON_READ_NAME(value, "frames_per_second", m_framesPerSecond);
-		JSON_READ_NAME(value, "loop", m_loop);
+		JSON_READ_OPTIONAL(value, "frames_per_second", m_framesPerSecond);
+		JSON_READ_OPTIONAL(value, "loop", m_loop);
 
 		std::string texture_frames;
 		JSON_READ(value, texture_frames);
 
-		if (texture_frames.empty()) {
+		if (!texture_frames.empty()) {
 			m_textureFrames = Resources().Get<TextureFrames>(texture_frames, Engine::Get().GetRenderer());
 
 			if (!m_textureFrames) {

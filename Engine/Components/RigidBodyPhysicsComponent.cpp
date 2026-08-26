@@ -25,6 +25,13 @@ namespace nu {
 
 	}
 
+	void RigidBodyPhysicsComponent::Read(const json::value_t& value) {
+		PhysicsComponent::Read(value);
+
+		JSON_READ_OPTIONAL(value, "velocity", m_velocity);
+		JSON_READ_OPTIONAL(value, "angular_velocity", m_angularVelocity);
+	}
+
 	void nu::RigidBodyPhysicsComponent::ApplyForce(const Vector2& force) {
 		m_acceleration += force / m_mass;
 	}
@@ -58,10 +65,13 @@ namespace nu {
 		return GetOwner()->GetTransform().position;
 	}
 
-	void RigidBodyPhysicsComponent::Read(const json::value_t& value) {
-		PhysicsComponent::Read(value);
-
-		JSON_READ_NAME(value, "velocity", m_velocity);
-		JSON_READ_NAME(value, "angular_velocity", m_angularVelocity);
+	void RigidBodyPhysicsComponent::SetRotation(float rotation){
+		GetOwner()->SetRotation(rotation);
 	}
+	float RigidBodyPhysicsComponent::GetRotation() const{
+		return GetOwner()->GetTransform().rotation;
+	}
+
+	
+	
 }
