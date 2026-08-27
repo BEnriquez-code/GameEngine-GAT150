@@ -76,6 +76,7 @@ namespace nu {
 
         JSON_READ_NAME(value, "name", m_name);
         JSON_READ_NAME(value, "tag", m_tag);
+        JSON_READ_NAME(value, "persistent", m_persistent);
         
         
 

@@ -14,6 +14,12 @@ void Bullet::Update(float dt) {
 		nu::Vector2 forward{ 1.0f, 0.0f };
 		nu::Vector2 velocity = forward.Rotate(m_transform.rotation * nu::math::DegToRad) * m_speed;
 		physicsComponent->SetVelocity(velocity);
+
+		nu::Vector2 position = physicsComponent->GetPosition();
+		position.x = nu::math::Wrap(0.0f, 1200.f, position.x);
+		position.y = nu::math::Wrap(0.0f, 1024.f, position.y);
+
+		physicsComponent->SetPosition(position);
 	}
 
 	m_lifespan -= dt;	
@@ -21,8 +27,6 @@ void Bullet::Update(float dt) {
 	if (m_lifespan <= 0.0f) {
 		SetDestroyed();
 	}
-
-	//SetVelocity(velocity);
 
 	Actor::Update(dt);
 }

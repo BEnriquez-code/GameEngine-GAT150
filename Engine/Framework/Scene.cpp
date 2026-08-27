@@ -12,8 +12,8 @@ namespace nu {
 		m_pendingActors.push_back(std::move(actor));
 	}
 
-	void Scene::RemoveAllActors() {
-		m_actors.clear();
+	void Scene::RemoveAllActors(bool force) {
+		std::erase_if(m_actors, [force](auto& actor) { return !actor->GetPersistent() || force; });
 	}
 
 	bool Scene::Load(const std::string& sceneName){
@@ -60,7 +60,7 @@ namespace nu {
 		for (auto& actor : m_actors) {
 			actor->Update(dt);
 		}
-		UpdateCollisions();
+		//UpdateCollisions();
 		//remove destroyed actors
 		for (auto& actor : m_actors) {
 			if (actor->m_destroyed) actor->OnDestroy();

@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Tilemaps">
+      <UniqueIdentifier>{9489f5e6-0d77-4328-a2ae-0b84c54d5c90}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -53,5 +56,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Build\Assets\Data\scene.json" />
+    <None Include="..\Build\Assets\Textures\Tilemaps\world.json">
+      <Filter>Tilemaps</Filter>
+    </None>
   </ItemGroup>
 </Project>
