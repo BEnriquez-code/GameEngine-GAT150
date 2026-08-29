@@ -173,8 +173,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Build\Assets\Data\scene.json" />
-    <None Include="..\Build\Assets\Textures\Tilemaps\world.json" />
+    <None Include="..\Build\Assets\SpaceGame\Data\scene.json" />
+    <None Include="..\Build\Assets\SpaceGame\Tilemaps\world.json" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SpaceGame\Assets.h" />

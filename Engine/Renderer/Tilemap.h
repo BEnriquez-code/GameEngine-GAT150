@@ -20,7 +20,7 @@ namespace nu {
 
 		const std::vector<Layer>& GetLayers() const { return m_layers; }
 		Rect GetTileRect(const Layer& layer, int tlieId);
-		Vector2 GetTilePosiiton(const Layer& layer, int tileIndex);
+		Vector2 GetTilePosition(const Layer& layer, int tileIndex);
 
 	private:
 		int m_tileWidth = 0;
