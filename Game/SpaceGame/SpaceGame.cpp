@@ -11,8 +11,9 @@
 using namespace nu;
 
 bool SpaceGame::Initialize() {
+	SetWorkingDirectory("SpaceGame");
 	Game::Initialize();
-	m_scene = new Scene();
+	m_scene = std::make_unique<Scene>();
 	m_scene->SetGame(this);
 	m_scene->Load("Data/scene.json");
 
@@ -216,6 +217,5 @@ void SpaceGame::SpawnEnemy() {
 }
 
 void SpaceGame::Shutdown() {
-	delete m_scene;
-	m_scene = nullptr;
+	m_scene.reset();
 }

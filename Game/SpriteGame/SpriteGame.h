@@ -7,7 +7,7 @@
 
 #include <vector>
 
-class SpaceGame : public nu::Game {
+class SpriteGame : public nu::Game {
 
 public:
 	enum class GameState {
@@ -18,19 +18,14 @@ public:
 		GameOver
 	};
 
-	SpaceGame() = default;
-	SpaceGame(nu::Scene* scene) :
-		Game{ scene } {}
+	SpriteGame() = default;
+	SpriteGame(nu::Scene* scene){}
 
 	bool Initialize() override;
 	void Shutdown() override;
 
-	void Update(float dt, const std::vector<nu::Vector2>& mousePoints);
 	void Update(float dt) override;
 	void Draw(class nu::Renderer& renderer) override;
-
-	float PointToLineSegDistance(const nu::Vector2& A, const nu::Vector2& B, const nu::Vector2& C);
-	void CheckLineCollisions(const std::vector<nu::Vector2>& mousePoints);
 
 	void OnPlayerDead();
 	void AddPoints(int points) { m_score += points; };

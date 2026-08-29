@@ -1,13 +1,15 @@
 #include "Engine.h"
-#include "Player.h"
-#include "Enemy.h"
-#include "Assets.h"
-#include "Bullet.h"
-#include "SpaceGame.h"
+#include "SpaceGame/Player.h"
+#include "SpaceGame/Enemy.h"
+#include "SpaceGame/Assets.h"
+#include "SpaceGame/Bullet.h"
+#include "SpaceGame/SpaceGame.h"
 #include "Serialization/Json.h"
 #include <fmod.hpp>
 
-#include "SDL3/SDL.h"
+#include "SpriteGame/SpriteGame.h"
+
+#include "SDL3/SDL.h"   
 #include <iostream>
 #include <vector>
 #include <map>
