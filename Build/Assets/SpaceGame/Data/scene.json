@@ -1,8 +1,6 @@
 {
     "actors": [
         {
-<<<<<<< Updated upstream
-=======
             "type": "Actor",
             "prototype": false,
             "name": "Tilemap",
@@ -10,7 +8,7 @@
             "active": true,
             "persistent": true,
             "transform": {
-                "position": [ 0.0, 0.0],
+                "position": [ 0.0, 0.0 ],
                 "rotation": 0.0,
                 "scale": 3.0
             },
@@ -21,12 +19,10 @@
                 }
             ]
         },
-
         {
->>>>>>> Stashed changes
             "name": "PlayerPrototype",
             "tag": "Player",
-            "type": "PlayerController",
+            "type": "Player",
             "prototype": true,
             "active": true,
             "damping": 2.0,
@@ -40,39 +36,19 @@
             "components": [
                 {
                     "type": "SpriteAnimatorRendererComponent",
-<<<<<<< Updated upstream
-                    "default_animation": "run",
-                    "animations": [
-                        {
-                            "name": "run",
-                            "texture_frames": "Animations/bat_idle.json",
-                            "frame_per_second": 10,
-=======
                     "default_animation": "idle",
                     "animations": [
                         {
-                            "name": "run",
-                            "texture_frames": "Animations/hero_run.json",
-                            "frames_per_second": 10,
->>>>>>> Stashed changes
-                            "loop": true
+                            "name": "idle",
+                            "texture_frames": "Animations/hero_idle.json",
+                            "frames_per_second": 10
                         },
                         {
-                            "name": "idle",
-<<<<<<< Updated upstream
-                            "texture_frames": "Animations/bat_idle.json",
-                            "frame_per_second": 10,
-                            "loop": true
+                            "name": "run",
+                            "texture_frames": "Animations/hero_run.json",
+                            "frames_per_second": 10
                         }
                     ]
-=======
-                            "texture_frames": "Animations/hero_idle.json",
-                            "frames_per_second": 10,
-                            "loop": true
-                        }
-                    ]
-
->>>>>>> Stashed changes
                 },
                 {
                     "type": "Box2DPhysicsComponent",
@@ -90,25 +66,6 @@
             ]
         },
         {
-            "type": "Actor",
-            "prototype": false,
-            "name": "Tilemap",
-            "tag": "Ground",
-            "active": true,
-            "persistent": true,
-            "transform": {
-                "position": [ 0, 0 ],
-                "rotation": 0,
-                "scale": 10
-            },
-            "components": [
-                {
-                    "type": "TilemapRendererComponent",
-                    "tilemap_name": "Tilemaps/world.json"
-                }
-            ]
-        },
-        {
             "name": "EnemyPrototype",
             "tag": "Enemy",
             "type": "Enemy",
@@ -116,20 +73,26 @@
             "active": true,
             "damping": 300.0,
             "speed": 100.0,
+            "velocity": [ 0.0, 0.0 ],
+            "transform": {
+                "position": [ 0.0, 0.0 ],
+                "rotation": 0.0,
+                "scale": 1.0
+            },
             "components": [
                 {
                     "type": "SpriteAnimatorRendererComponent",
                     "default_animation": "idle",
                     "animations": [
                         {
-                            "name": "run",
-                            "texture_frames": "Animations/enemy_run.json",
+                            "name": "idle",
+                            "texture_frames": "Animations/enemy_idle.json",
                             "frames_per_second": 10,
                             "loop": true
                         },
                         {
-                            "name": "idle",
-                            "texture_frames": "Animations/enemy_idle.json",
+                            "name": "run",
+                            "texture_frames": "Animations/enemy_run.json",
                             "frames_per_second": 10,
                             "loop": true
                         }
@@ -153,8 +116,15 @@
             "tag": "PlayerBullet",
             "type": "Bullet",
             "prototype": true,
+            "active": true,
             "lifespan": 2.0,
             "speed": 800.0,
+            "velocity": [ 0.0, 0.0 ],
+            "transform": {
+                "position": [ 0.0, 0.0 ],
+                "rotation": 0.0,
+                "scale": 1.0
+            },
             "components": [
                 {
                     "type": "SpriteRendererComponent",
@@ -173,5 +143,4 @@
             ]
         }
     ]
-
 }
