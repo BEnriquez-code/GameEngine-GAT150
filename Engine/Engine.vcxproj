@@ -176,14 +176,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Audio\Audio.h" />
-    <ClInclude Include="ColliderComponent.h" />
-    <ClInclude Include="Component.h" />
     <ClInclude Include="Components\Box2DPhysicsComponent.h" />
     <ClInclude Include="Components\CircleColliderComponent.h" />
+    <ClInclude Include="Components\ColliderComponent.h" />
+    <ClInclude Include="Components\Component.h" />
     <ClInclude Include="Components\PhysicsComponent.h" />
     <ClInclude Include="Components\RendererComponent.h" />
     <ClInclude Include="Components\RigidBodyPhysicsComponent.h" />
     <ClInclude Include="Components\SpriteAnimationRendererComponent.h" />
+    <ClInclude Include="Components\SpriteAnimatorRendererComponent.h" />
     <ClInclude Include="Components\SpriteRendererComponent.h" />
     <ClInclude Include="Components\TilemapRendererComponent.h" />
     <ClInclude Include="Core\Factory.h" />
@@ -224,9 +225,11 @@
     <ClCompile Include="Audio\Audio.cpp" />
     <ClCompile Include="Components\Box2DPhysicsComponent.cpp" />
     <ClCompile Include="Components\CircleColliderComponent.cpp" />
+    <ClCompile Include="Components\ColliderComponent.cpp" />
     <ClCompile Include="Components\PhysicsComponent.cpp" />
     <ClCompile Include="Components\RigidBodyPhysicsComponent.cpp" />
     <ClCompile Include="Components\SpriteAnimationRendererComponent.cpp" />
+    <ClCompile Include="Components\SpriteAnimatorRendererComponent.cpp" />
     <ClCompile Include="Components\SpriteRendererComponent.cpp" />
     <ClCompile Include="Components\TilemapRendererComponent.cpp" />
     <ClCompile Include="Core\File.cpp" />
@@ -254,9 +257,6 @@
     <ClCompile Include="Renderer\TextureFrames.cpp" />
     <ClCompile Include="Renderer\Tilemap.cpp" />
     <ClCompile Include="Serialization\Json.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\Build\Assets\Animations\bat_idle.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

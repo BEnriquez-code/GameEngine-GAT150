@@ -1,50 +1,9 @@
 {
     "actors": [
         {
-            "type": "Actor",
-            "prototype": false,
-            "name": "Bat",
-            "tag": "Enemy",
-            "active": true,
-            "persistent": true,
-            "transform": {
-                "position": [ 640.0, 512.0 ],
-                "rotation": 0.0,
-                "scale": 15.0
-            },
-            "components": [
-                {
-                    "type": "SpriteAnimationRendererComponent",
-                    "texture_frames": "Animations/bat_idle.json",
-                    "frame_per_second": 10,
-                    "loop": true
-                }
-            ]
-        },
-        {
-            "type": "Actor",
-            "prototype": false,
-            "name": "Tilemap",
-            "tag": "Ground",
-            "active": true,
-            "persistent": true,
-            "transform": {
-                "position": [ 0.0, 0.0],
-                "rotation": 0.0,
-                "scale": 3.0
-            },
-            "components": [
-                {
-                    "type": "TilemapRendererComponent",
-                    "tilemap_name": "Tilemaps/world.json"
-                }
-            ]
-        },
-
-        {
             "name": "PlayerPrototype",
             "tag": "Player",
-            "type": "Player",
+            "type": "PlayerController",
             "prototype": true,
             "active": true,
             "damping": 2.0,
@@ -57,19 +16,54 @@
             },
             "components": [
                 {
-                    "type": "SpriteRendererComponent",
-                    "texture": "Textures/player.png"
+                    "type": "SpriteAnimatorRendererComponent",
+                    "default_animation": "run",
+                    "animations": [
+                        {
+                            "name": "run",
+                            "texture_frames": "Animations/bat_idle.json",
+                            "frame_per_second": 10,
+                            "loop": true
+                        },
+                        {
+                            "name": "idle",
+                            "texture_frames": "Animations/bat_idle.json",
+                            "frame_per_second": 10,
+                            "loop": true
+                        }
+                    ]
                 },
                 {
                     "type": "Box2DPhysicsComponent",
-                    "damping": 2.0,
+                    "linear_damping": 2.0,
                     "angular_damping": 1.0,
                     "size": [ 48, 48 ],
+                    "shape": "capsule",
+                    "constrain_angle": true,
                     "gravity_scale": 0
                 },
                 {
                     "type": "CircleColliderComponent",
                     "radius": 64.0
+                }
+            ]
+        },
+        {
+            "type": "Actor",
+            "prototype": false,
+            "name": "Tilemap",
+            "tag": "Ground",
+            "active": true,
+            "persistent": true,
+            "transform": {
+                "position": [ 0, 0 ],
+                "rotation": 0,
+                "scale": 10
+            },
+            "components": [
+                {
+                    "type": "TilemapRendererComponent",
+                    "tilemap_name": "Tilemaps/world.json"
                 }
             ]
         },
