@@ -87,9 +87,9 @@ void SpaceGame::Update(float dt, const std::vector<nu::Vector2>& mousePoints) {
 				SpawnEnemy();
 			}
 
-			if (m_scene->FindByTag<Player>("Player") == nullptr) {
+			/*if (m_scene->FindByTag<Player>("Player") == nullptr) {
 				OnPlayerDead();
-			}
+			}*/
 
 
 			CheckLineCollisions(mousePoints);
@@ -109,6 +109,7 @@ void SpaceGame::Update(float dt)
 }
 
 void SpaceGame::Draw(Renderer& renderer) {
+	renderer.SetCameraEnabled(false);
 	m_scene->Draw(renderer);
 
 	switch (m_gameState) {
@@ -122,7 +123,7 @@ void SpaceGame::Draw(Renderer& renderer) {
 	case SpaceGame::GameState::StartLevel:
 		break;
 	case SpaceGame::GameState::Game:
-		//renderer.DrawTexture(*m_backgroundTexture, 0.0f, 0.0f,  0.0f, 0.0f, false);
+		renderer.DrawTexture(*m_backgroundTexture, 0.0f, 0.0f,  0.0f, 0.0f, false);
 		m_scene->Draw(renderer);
 		Engine::Get().GetPS().Draw(Engine::Get().GetRenderer());
 
@@ -141,6 +142,8 @@ void SpaceGame::Draw(Renderer& renderer) {
 	default:
 		break;
 	}
+	renderer.SetCameraEnabled();
+	Game::Draw(renderer);
 }
 
 float SpaceGame::PointToLineSegDistance(const nu::Vector2& A, const nu::Vector2& B, const nu::Vector2& C) {

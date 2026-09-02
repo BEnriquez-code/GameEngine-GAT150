@@ -24,7 +24,7 @@ namespace nu {
 		if (!m_spriteAnimation.textureFrames)return;
 
 		m_frameTimer += dt;
-		float frameTime = 0.1f / m_spriteAnimation.framesPerSecond;
+		float frameTime = 0.001f / m_spriteAnimation.framesPerSecond;
 
 		while (m_frameTimer >= frameTime) {
 			m_frameTimer -= frameTime;
@@ -41,6 +41,8 @@ namespace nu {
 	}
 
 	void nu::SpriteAnimatorRendererComponent::Play(const std::string& name) {
+		if (EqualsIgnoreCase(name, m_spriteAnimation.name)) return;
+
 		auto iter = m_spriteAnimations.find(name);
 		if (iter == m_spriteAnimations.end()) {
 			std::cerr << "Could not find animation " << name << std::endl;

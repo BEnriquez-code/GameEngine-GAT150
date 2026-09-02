@@ -30,7 +30,15 @@
     <None Include="..\Build\Assets\SpaceGame\Tilemaps\world.json">
       <Filter>Tilemaps</Filter>
     </None>
-    <None Include="..\Build\Assets\SpaceGame\Data\scene.json" />
+    <None Include="..\Build\Assets\Animations\bat_idle.json">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\SpaceGame\Data\scene.json">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\SpaceGame\Data\level.json">
+      <Filter>Assets</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -52,6 +60,9 @@
     <ClCompile Include="SpriteGame\SpriteGame.cpp">
       <Filter>SpriteGame</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerController.cpp">
+      <Filter>SpriteGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SpaceGame\SpaceGame.h">
@@ -70,6 +81,9 @@
       <Filter>SpaceGame</Filter>
     </ClInclude>
     <ClInclude Include="SpriteGame\SpriteGame.h">
+      <Filter>SpriteGame</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerController.h">
       <Filter>SpriteGame</Filter>
     </ClInclude>
   </ItemGroup>
