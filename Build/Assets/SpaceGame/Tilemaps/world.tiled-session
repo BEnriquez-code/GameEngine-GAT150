@@ -12,7 +12,7 @@
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 237,
+                "x": 196.66666666666669,
                 "y": 60.66666666666663
             }
         },
@@ -29,7 +29,7 @@
             "scaleInEditor": 1
         }
     },
-    "last.exportedFilePath": "C:/Users/benriquez/OneDrive/Desktop/Neumont/Q4/CSC196-C++2/GameEngine/Build/Assets/Textures/Tilemaps",
+    "last.exportedFilePath": "C:/Users/benriquez/OneDrive/Desktop/Neumont/Q4/CSC196-C++2/GameEngine/Build/Assets/SpaceGame/Tilemaps",
     "last.imagePath": "C:/Users/benriquez/OneDrive/Desktop/Neumont/Q4/CSC196-C++2/GameEngine/Build/Assets/SpaceGame/Textures",
     "map.lastUsedExportFilter": "All Files (*)",
     "map.lastUsedFormat": "json",
@@ -40,7 +40,7 @@
         "world.tsx"
     ],
     "project": "world.tiled-project",
-    "property.type": "string",
+    "property.type": "bool",
     "recentFiles": [
         "world.tsx",
         "world.json",

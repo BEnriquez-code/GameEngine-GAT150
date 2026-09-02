@@ -61,9 +61,11 @@
                     "texture": "Textures/player.png"
                 },
                 {
-                    "type": "RigidBodyPhysicsComponent",
+                    "type": "Box2DPhysicsComponent",
                     "damping": 2.0,
-                    "angular_damping": 1.0
+                    "angular_damping": 1.0,
+                    "size": [ 48, 48 ],
+                    "gravity_scale": 0
                 },
                 {
                     "type": "CircleColliderComponent",
@@ -85,7 +87,7 @@
                     "texture": "Textures/enemy.png"
                 },
                 {
-                    "type": "RigidBodyPhysicsComponent",
+                    "type": "Box2DPhysicsComponent",
                     "linear_damping": 2.0,
                     "angular_damping": 1.0,
                     "size": [ 48, 48 ],
