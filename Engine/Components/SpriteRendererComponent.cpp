@@ -31,6 +31,7 @@ namespace nu {
 					m_flipH;
 			}
 			else {
+<<<<<<< Updated upstream
 			renderer.DrawTexture(*m_texture,
 				GetOwner()->GetTransform().position.x,
 				GetOwner()->GetTransform().position.y,
@@ -39,12 +40,37 @@ namespace nu {
 				m_flipH;
 			}
 		}	
+=======
+				renderer.DrawTexture(*m_texture,
+					GetOwner()->GetTransform().position.x,
+					GetOwner()->GetTransform().position.y,
+					GetOwner()->GetTransform().rotation,
+					GetOwner()->GetTransform().scale),
+					m_flipH;
+			}
+		}
+>>>>>>> Stashed changes
 	}
 
 	void SpriteRendererComponent::Read(const json::value_t& value){
 		RendererComponent::Read(value);
+<<<<<<< Updated upstream
 		JSON_READ_NAME(value, "texture", m_textureName);
 		JSON_READ_NAME(value, "flipH", m_flipH);
+=======
+		std::string textureName;
+		JSON_READ_NAME(value, "texture", textureName);
+		if (!textureName.empty()) {
+			m_texture = Resources().Get<Texture>(textureName, Engine::Get().GetRenderer());
+			if (!m_texture) {
+				std::cerr << "Failed to Load texture: " << textureName << std::endl;
+			}
+		}
+
+		JSON_READ_NAME(value, "texture", m_textureName);
+		JSON_READ_NAME(value, "flipH", m_flipH);
+
+>>>>>>> Stashed changes
 	}
 
 

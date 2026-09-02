@@ -1,6 +1,29 @@
 {
     "actors": [
         {
+<<<<<<< Updated upstream
+=======
+            "type": "Actor",
+            "prototype": false,
+            "name": "Tilemap",
+            "tag": "Ground",
+            "active": true,
+            "persistent": true,
+            "transform": {
+                "position": [ 0.0, 0.0],
+                "rotation": 0.0,
+                "scale": 3.0
+            },
+            "components": [
+                {
+                    "type": "TilemapRendererComponent",
+                    "tilemap_name": "Tilemaps/world.json"
+                }
+            ]
+        },
+
+        {
+>>>>>>> Stashed changes
             "name": "PlayerPrototype",
             "tag": "Player",
             "type": "PlayerController",
@@ -17,21 +40,39 @@
             "components": [
                 {
                     "type": "SpriteAnimatorRendererComponent",
+<<<<<<< Updated upstream
                     "default_animation": "run",
                     "animations": [
                         {
                             "name": "run",
                             "texture_frames": "Animations/bat_idle.json",
                             "frame_per_second": 10,
+=======
+                    "default_animation": "idle",
+                    "animations": [
+                        {
+                            "name": "run",
+                            "texture_frames": "Animations/hero_run.json",
+                            "frames_per_second": 10,
+>>>>>>> Stashed changes
                             "loop": true
                         },
                         {
                             "name": "idle",
+<<<<<<< Updated upstream
                             "texture_frames": "Animations/bat_idle.json",
                             "frame_per_second": 10,
                             "loop": true
                         }
                     ]
+=======
+                            "texture_frames": "Animations/hero_idle.json",
+                            "frames_per_second": 10,
+                            "loop": true
+                        }
+                    ]
+
+>>>>>>> Stashed changes
                 },
                 {
                     "type": "Box2DPhysicsComponent",
@@ -77,8 +118,22 @@
             "speed": 100.0,
             "components": [
                 {
-                    "type": "SpriteRendererComponent",
-                    "texture": "Textures/enemy.png"
+                    "type": "SpriteAnimatorRendererComponent",
+                    "default_animation": "idle",
+                    "animations": [
+                        {
+                            "name": "run",
+                            "texture_frames": "Animations/enemy_run.json",
+                            "frames_per_second": 10,
+                            "loop": true
+                        },
+                        {
+                            "name": "idle",
+                            "texture_frames": "Animations/enemy_idle.json",
+                            "frames_per_second": 10,
+                            "loop": true
+                        }
+                    ]
                 },
                 {
                     "type": "Box2DPhysicsComponent",

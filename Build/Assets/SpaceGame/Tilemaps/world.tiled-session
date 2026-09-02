@@ -10,11 +10,16 @@
             "scaleInEditor": 1
         },
         "world.json": {
-            "scale": 1.5,
+            "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
+<<<<<<< Updated upstream
                 "x": 251.66666666666663,
                 "y": 106.66666666666663
+=======
+                "x": 360,
+                "y": -184
+>>>>>>> Stashed changes
             }
         },
         "world.tmx": {

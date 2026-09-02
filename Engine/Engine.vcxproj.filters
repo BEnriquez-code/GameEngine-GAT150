@@ -171,6 +171,7 @@
     <ClInclude Include="Components\TilemapRendererComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
+<<<<<<< Updated upstream
     <ClInclude Include="Components\SpriteAnimatorRendererComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
@@ -178,6 +179,12 @@
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="Components\ColliderComponent.h">
+=======
+    <ClInclude Include="Components\Component.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\SpriteAnimatorRendererComponent.h">
+>>>>>>> Stashed changes
       <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
@@ -269,8 +276,14 @@
     <ClCompile Include="Components\SpriteAnimatorRendererComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+<<<<<<< Updated upstream
     <ClCompile Include="Components\ColliderComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+=======
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Build\Assets\Animations\bat_idle.json" />
+>>>>>>> Stashed changes
   </ItemGroup>
 </Project>

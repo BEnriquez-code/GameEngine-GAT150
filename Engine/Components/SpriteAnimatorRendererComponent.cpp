@@ -9,7 +9,11 @@
 namespace nu {
 	FACTORY_REGISTER(SpriteAnimatorRendererComponent)
 
+<<<<<<< Updated upstream
 	void nu::SpriteAnimatorRendererComponent::Start() {
+=======
+		void nu::SpriteAnimatorRendererComponent::Start() {
+>>>>>>> Stashed changes
 		if (!m_defaultAnimationName.empty()) {
 			Play(m_defaultAnimationName);
 		}
@@ -24,7 +28,11 @@ namespace nu {
 		if (!m_spriteAnimation.textureFrames)return;
 
 		m_frameTimer += dt;
+<<<<<<< Updated upstream
 		float frameTime = 0.1f / m_spriteAnimation.framesPerSecond;
+=======
+		float frameTime = 1.0f / m_spriteAnimation.framesPerSecond;
+>>>>>>> Stashed changes
 
 		while (m_frameTimer >= frameTime) {
 			m_frameTimer -= frameTime;
@@ -41,8 +49,11 @@ namespace nu {
 	}
 
 	void nu::SpriteAnimatorRendererComponent::Play(const std::string& name) {
+<<<<<<< Updated upstream
 		if (EqualsIgnoreCase(name, m_spriteAnimation.name)) return;
 
+=======
+>>>>>>> Stashed changes
 		auto iter = m_spriteAnimations.find(name);
 		if (iter == m_spriteAnimations.end()) {
 			std::cerr << "Could not find animation " << name << std::endl;
@@ -93,4 +104,8 @@ namespace nu {
 		}
 
 	}
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
