@@ -1,5 +1,9 @@
 #pragma once
+<<<<<<< Updated upstream
 #include "Components/ColliderComponent.h"
+=======
+#include "ColliderComponent.h"
+>>>>>>> Stashed changes
 
 namespace nu {
 

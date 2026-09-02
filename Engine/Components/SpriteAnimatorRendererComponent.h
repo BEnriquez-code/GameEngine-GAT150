@@ -4,18 +4,30 @@
 
 namespace nu {
 	class SpriteAnimatorRendererComponent : public SpriteRendererComponent {
+<<<<<<< Updated upstream
 	
 	public:
 		CLASS_PROTOTYPE(SpriteAnimatorRendererComponent)
 
 		struct SpriteAnimation {
+=======
+
+	public:
+		CLASS_PROTOTYPE(SpriteAnimatorRendererComponent)
+
+			struct SpriteAnimation {
+>>>>>>> Stashed changes
 			std::string name;
 			float framesPerSecond{ 10.0f };
 			bool loop = true;
 			res_t<class TextureFrames> textureFrames;
 		};
 
+<<<<<<< Updated upstream
 		
+=======
+
+>>>>>>> Stashed changes
 
 		void Start() override;
 		void Update(float dt) override;
