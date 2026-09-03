@@ -41,12 +41,20 @@
                         {
                             "name": "idle",
                             "texture_frames": "Animations/hero_idle.json",
+<<<<<<< Updated upstream
                             "frames_per_second": 10
+=======
+                            "frames_per_second": 10.0
+>>>>>>> Stashed changes
                         },
                         {
                             "name": "run",
                             "texture_frames": "Animations/hero_run.json",
+<<<<<<< Updated upstream
                             "frames_per_second": 10
+=======
+                            "frames_per_second": 10.0
+>>>>>>> Stashed changes
                         }
                     ]
                 },
@@ -87,13 +95,21 @@
                         {
                             "name": "idle",
                             "texture_frames": "Animations/enemy_idle.json",
+<<<<<<< Updated upstream
                             "frames_per_second": 10,
+=======
+                            "frames_per_second": 10.0,
+>>>>>>> Stashed changes
                             "loop": true
                         },
                         {
                             "name": "run",
                             "texture_frames": "Animations/enemy_run.json",
+<<<<<<< Updated upstream
                             "frames_per_second": 10,
+=======
+                            "frames_per_second": 10.0,
+>>>>>>> Stashed changes
                             "loop": true
                         }
                     ]

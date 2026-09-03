@@ -10,7 +10,11 @@ namespace nu {
 	FACTORY_REGISTER(SpriteAnimatorRendererComponent)
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	void nu::SpriteAnimatorRendererComponent::Start() {
+=======
+		void nu::SpriteAnimatorRendererComponent::Start() {
+>>>>>>> Stashed changes
 =======
 		void nu::SpriteAnimatorRendererComponent::Start() {
 >>>>>>> Stashed changes
@@ -29,7 +33,11 @@ namespace nu {
 
 		m_frameTimer += dt;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 		float frameTime = 0.1f / m_spriteAnimation.framesPerSecond;
+=======
+		float frameTime = 1.0f / m_spriteAnimation.framesPerSecond;
+>>>>>>> Stashed changes
 =======
 		float frameTime = 1.0f / m_spriteAnimation.framesPerSecond;
 >>>>>>> Stashed changes
@@ -50,8 +58,11 @@ namespace nu {
 
 	void nu::SpriteAnimatorRendererComponent::Play(const std::string& name) {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 		if (EqualsIgnoreCase(name, m_spriteAnimation.name)) return;
 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 		auto iter = m_spriteAnimations.find(name);
@@ -105,7 +116,11 @@ namespace nu {
 
 	}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
 =======
 }
 >>>>>>> Stashed changes

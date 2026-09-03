@@ -9,6 +9,10 @@
 namespace nu {
 	FACTORY_REGISTER(SpriteRendererComponent)
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 	void SpriteRendererComponent::Start() {
 		if (!m_textureName.empty()) {
 			m_texture = Resources().Get<Texture>(m_textureName, Engine::Get().GetRenderer());
@@ -17,7 +21,10 @@ namespace nu {
 			}
 		}
 	}
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 	void SpriteRendererComponent::Draw(const Renderer& renderer) {
 
 		if (m_texture) {
@@ -36,6 +43,7 @@ namespace nu {
 				GetOwner()->GetTransform().position.x,
 				GetOwner()->GetTransform().position.y,
 				GetOwner()->GetTransform().rotation,
+<<<<<<< Updated upstream
 				GetOwner()->GetTransform().scale),
 				m_flipH;
 			}
@@ -48,6 +56,18 @@ namespace nu {
 					GetOwner()->GetTransform().scale),
 					m_flipH;
 			}
+		}
+>>>>>>> Stashed changes
+=======
+				GetOwner()->GetTransform().scale);
+		}
+		else {
+			renderer.DrawTexture(*m_texture,
+				GetOwner()->GetTransform().position.x,
+				GetOwner()->GetTransform().position.y,
+				GetOwner()->GetTransform().rotation,
+				GetOwner()->GetTransform().scale),
+				m_flipH;
 		}
 >>>>>>> Stashed changes
 	}
@@ -70,6 +90,9 @@ namespace nu {
 		JSON_READ_NAME(value, "texture", m_textureName);
 		JSON_READ_NAME(value, "flipH", m_flipH);
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 	}
 

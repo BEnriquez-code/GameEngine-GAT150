@@ -172,6 +172,7 @@
       <Filter>Components</Filter>
     </ClInclude>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <ClInclude Include="Components\SpriteAnimatorRendererComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
@@ -187,6 +188,11 @@
 >>>>>>> Stashed changes
       <Filter>Components</Filter>
     </ClInclude>
+=======
+    <ClInclude Include="Components\SpriteAnimatorRendererComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -277,10 +283,13 @@
       <Filter>Components</Filter>
     </ClCompile>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <ClCompile Include="Components\ColliderComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
 =======
+=======
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Build\Assets\Animations\bat_idle.json" />
