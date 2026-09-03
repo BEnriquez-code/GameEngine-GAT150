@@ -2,7 +2,6 @@
 #include "Components/PhysicsComponent.h"
 #include "Components/SpriteAnimatorRendererComponent.h"
 #include "Core/Factory.h"
-#include "Framework/Actor.h"
 #include "Engine.h"
 
 
@@ -22,8 +21,14 @@ void PlayerController::Update(float dt) {
 	nu::Vector2 velocity = m_physicsComponent->GetVelocity();
 
 	float dir = 0.0f;
-	if (nu::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_A))dir = -1.0f;
-	if (nu::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_D)) dir = +1.0f;
+	if (nu::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_A)) {
+		dir = -1.0f;
+		m_spriteAnimatorRendererComponent->SetFlipH(true);
+	}
+	if (nu::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_D)) {
+		dir = +1.0f;
+		m_spriteAnimatorRendererComponent->SetFlipH(false);
+	}
 	if (nu::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_SPACE)) {
 		velocity.y = -300.0f;
 	}
