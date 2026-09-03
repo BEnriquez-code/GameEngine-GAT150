@@ -20,10 +20,40 @@ namespace nu {
 		JSON_READ_NAME(document, "tileheight", m_tileHeight);
 
 		// read tilemap layers
-		if (JSON_HAS_NAME(document, "layers"))
-		{
-			for (auto& layerValue : JSON_GET_NAME(document, "layers").GetArray())
-			{
+		if (JSON_HAS_NAME(document, "layers")){
+			for (auto& layerValue : JSON_GET_NAME(document, "layers").GetArray()){
+				std::string layerType;
+				JSON_READ_NAME(layerValue, "type", layerType);
+				if (EqualsIgnoreCase(layerType, "objectgroup")) {
+					if (JSON_HAS_NAME(layerValue, "objects")) {
+						for (auto& objectValue : JSON_GET_NAME(layerValue, "objects").GetArray()) {
+							GravityZone zone;
+							float x = 0, y = 0, w = 0, h = 0;
+							JSON_READ_NAME(objectValue, "x", x);
+							JSON_READ_NAME(objectValue, "y", y);
+							JSON_READ_NAME(objectValue, "width", w);
+							JSON_READ_NAME(objectValue, "height", h);
+							zone.bounds = Rect{ x, y, w, h };
+							zone.direction = Vector2{ 0.0f, 1.0f }; // default direction
+
+							if (JSON_HAS_NAME(objectValue, "properties")) {
+								for (auto& propertyValue : JSON_GET(objectValue, properties).GetArray()) {
+									std::string name;
+									JSON_READ(propertyValue, name);
+									if (EqualsIgnoreCase(name, "gravity_dir")) {
+										std::string value;
+										JSON_READ(propertyValue, value);
+										if (EqualsIgnoreCase(value, "up"))         zone.direction = Vector2{ 0.0f, -1.0f };
+										else if (EqualsIgnoreCase(value, "down"))  zone.direction = Vector2{ 0.0f,  1.0f };
+										else if (EqualsIgnoreCase(value, "left"))  zone.direction = Vector2{ -1.0f, 0.0f };
+										else if (EqualsIgnoreCase(value, "right")) zone.direction = Vector2{ 1.0f, 0.0f };
+									}
+								}
+							}
+							m_gravityZones.push_back(zone);
+						}
+					}
+				}
 				Layer layer;
 
 				JSON_READ_NAME(layerValue, "height", layer.height);

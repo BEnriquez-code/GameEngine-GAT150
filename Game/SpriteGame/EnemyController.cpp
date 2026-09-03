@@ -34,6 +34,8 @@ void EnemyController::Update(float dt) {
 	else {
 		m_spriteAnimatorRendererComponent->Play("idle");
 	}
+
+	m_physicsComponent->SetVelocity(velocity);
 	CharacterBase::Update(dt);
 }
 

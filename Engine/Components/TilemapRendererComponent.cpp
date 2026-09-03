@@ -58,6 +58,21 @@ namespace nu {
 				m_physicsBodies.push_back(std::move(physicsBody));
 			}
 		}
+
+		Transform ownerTransform = GetOwner()->GetTransform();
+		for (const auto& zone : m_tilemap->GetGravityZones()){
+			Tilemap::GravityZone worldZone;
+			worldZone.bounds = Rect{
+				ownerTransform.position.x + zone.bounds.x * ownerTransform.scale,
+				ownerTransform.position.y + zone.bounds.y * ownerTransform.scale,
+				zone.bounds.w * ownerTransform.scale,
+				zone.bounds.h * ownerTransform.scale
+			};
+			worldZone.direction = zone.direction;
+			m_gravityZones.push_back(worldZone);
+		}
+
+
 	}
 
 	void TilemapRendererComponent::Draw(const Renderer& renderer){
@@ -96,6 +111,25 @@ namespace nu {
 		RendererComponent::Read(value);
 
 		JSON_READ_NAME(value, "tilemap_name", m_tilemapName);
+	}
+
+	Vector2 TilemapRendererComponent::GetNearestTilePosition(const Vector2& worldPos){
+
+		float bestDistSq = FLT_MAX;
+		Vector2 bestDir{ 0.0f, 0.0f };
+		for (const auto& zone : m_gravityZones){
+			float closestX = math::Clamp(worldPos.x, zone.bounds.x, zone.bounds.x + zone.bounds.w);
+			float closestY = math::Clamp(worldPos.y, zone.bounds.y, zone.bounds.y + zone.bounds.h);
+			float dx = worldPos.x - closestX;
+			float dy = worldPos.y - closestY;
+			float distSq = dx * dx + dy * dy;
+			if (distSq < bestDistSq){
+				bestDistSq = distSq;
+				bestDir = zone.direction;
+			}
+		}
+		return bestDir;
+		
 	}
 
 }
