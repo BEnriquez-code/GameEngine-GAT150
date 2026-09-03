@@ -3,33 +3,12 @@
         {
             "type": "Actor",
             "prototype": false,
-            "name": "Bat",
-            "tag": "Enemy",
-            "active": true,
-            "persistent": true,
-            "transform": {
-                "position": [ 640.0, 512.0 ],
-                "rotation": 0.0,
-                "scale": 15.0
-            },
-            "components": [
-                {
-                    "type": "SpriteAnimationRendererComponent",
-                    "texture_frames": "Animations/bat_idle.json",
-                    "frame_per_second": 10,
-                    "loop": true
-                }
-            ]
-        },
-        {
-            "type": "Actor",
-            "prototype": false,
             "name": "Tilemap",
             "tag": "Ground",
             "active": true,
             "persistent": true,
             "transform": {
-                "position": [ 0.0, 0.0],
+                "position": [ 0.0, 0.0 ],
                 "rotation": 0.0,
                 "scale": 3.0
             },
@@ -40,7 +19,6 @@
                 }
             ]
         },
-
         {
             "name": "PlayerPrototype",
             "tag": "Player",
@@ -57,14 +35,28 @@
             },
             "components": [
                 {
-                    "type": "SpriteRendererComponent",
-                    "texture": "Textures/player.png"
+                    "type": "SpriteAnimatorRendererComponent",
+                    "default_animation": "idle",
+                    "animations": [
+                        {
+                            "name": "idle",
+                            "texture_frames": "Animations/hero_idle.json",
+                            "frames_per_second": 10
+                        },
+                        {
+                            "name": "run",
+                            "texture_frames": "Animations/hero_run.json",
+                            "frames_per_second": 10
+                        }
+                    ]
                 },
                 {
                     "type": "Box2DPhysicsComponent",
-                    "damping": 2.0,
+                    "linear_damping": 2.0,
                     "angular_damping": 1.0,
                     "size": [ 48, 48 ],
+                    "shape": "capsule",
+                    "constrain_angle": true,
                     "gravity_scale": 0
                 },
                 {
@@ -81,10 +73,30 @@
             "active": true,
             "damping": 300.0,
             "speed": 100.0,
+            "velocity": [ 0.0, 0.0 ],
+            "transform": {
+                "position": [ 0.0, 0.0 ],
+                "rotation": 0.0,
+                "scale": 1.0
+            },
             "components": [
                 {
-                    "type": "SpriteRendererComponent",
-                    "texture": "Textures/enemy.png"
+                    "type": "SpriteAnimatorRendererComponent",
+                    "default_animation": "idle",
+                    "animations": [
+                        {
+                            "name": "idle",
+                            "texture_frames": "Animations/enemy_idle.json",
+                            "frames_per_second": 10,
+                            "loop": true
+                        },
+                        {
+                            "name": "run",
+                            "texture_frames": "Animations/enemy_run.json",
+                            "frames_per_second": 10,
+                            "loop": true
+                        }
+                    ]
                 },
                 {
                     "type": "Box2DPhysicsComponent",
@@ -104,8 +116,15 @@
             "tag": "PlayerBullet",
             "type": "Bullet",
             "prototype": true,
+            "active": true,
             "lifespan": 2.0,
             "speed": 800.0,
+            "velocity": [ 0.0, 0.0 ],
+            "transform": {
+                "position": [ 0.0, 0.0 ],
+                "rotation": 0.0,
+                "scale": 1.0
+            },
             "components": [
                 {
                     "type": "SpriteRendererComponent",
@@ -124,5 +143,4 @@
             ]
         }
     ]
-
 }
