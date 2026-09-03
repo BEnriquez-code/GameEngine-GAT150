@@ -187,6 +187,7 @@ void SpaceGame::CheckLineCollisions(const std::vector<Vector2>& mousePoints) {
 void SpaceGame::OnPlayerDead() {
 	m_lives--;
 	m_gameState = (m_lives == 0) ? GameState::GameOver : GameState::StartLevel;
+	std::cout << "Player Dead! Lives left: " << m_lives << std::endl;
 }
 
 void SpaceGame::AddKillStreakPoints(int basePoints) {

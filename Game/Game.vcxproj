@@ -165,6 +165,7 @@
     <ClCompile Include="SpaceGame\Enemy.cpp" />
     <ClCompile Include="SpaceGame\Player.cpp" />
     <ClCompile Include="SpaceGame\SpaceGame.cpp" />
+    <ClCompile Include="SpriteGame\PlayerController.cpp" />
     <ClCompile Include="SpriteGame\SpriteGame.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -182,6 +183,7 @@
     <ClInclude Include="SpaceGame\Enemy.h" />
     <ClInclude Include="SpaceGame\Player.h" />
     <ClInclude Include="SpaceGame\SpaceGame.h" />
+    <ClInclude Include="SpriteGame\PlayerController.h" />
     <ClInclude Include="SpriteGame\SpriteGame.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

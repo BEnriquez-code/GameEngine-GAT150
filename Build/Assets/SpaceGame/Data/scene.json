@@ -22,7 +22,7 @@
         {
             "name": "PlayerPrototype",
             "tag": "Player",
-            "type": "Player",
+            "type": "PlayerController",
             "prototype": true,
             "active": true,
             "damping": 2.0,
@@ -47,6 +47,11 @@
                             "name": "run",
                             "texture_frames": "Animations/hero_run.json",
                             "frames_per_second": 10.0
+                        },
+                        {
+                            "name": "jump",
+                            "texture_frames": "Animations/hero_jump.json",
+                            "frames_per_second": 10.0
                         }
                     ]
                 },
@@ -56,8 +61,7 @@
                     "angular_damping": 1.0,
                     "size": [ 48, 48 ],
                     "shape": "capsule",
-                    "constrain_angle": true,
-                    "gravity_scale": 0
+                    "gravity_scale": 1.0
                 },
                 {
                     "type": "CircleColliderComponent",
@@ -103,7 +107,7 @@
                     "linear_damping": 2.0,
                     "angular_damping": 1.0,
                     "size": [ 48, 48 ],
-                    "gravity_scale": 0
+                    "gravity_scale": 0.0
                 },
                 {
                     "type": "CircleColliderComponent",

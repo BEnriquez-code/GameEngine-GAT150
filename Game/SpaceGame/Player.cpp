@@ -39,10 +39,10 @@ void Player::Update(float dt) {
         physicsComponent->ApplyTorque(rotate);
 
         nu::Vector2 position = physicsComponent->GetPosition();
-        position.x = nu::math::Wrap(0.0f, 1200.f, position.x);
-        position.y = nu::math::Wrap(0.0f, 1024.f, position.y);
+        /*position.x = nu::math::Wrap(0.0f, 1200.f, position.x);
+        position.y = nu::math::Wrap(0.0f, 1024.f, position.y);*/
 
-        physicsComponent->SetPosition(position);
+        //physicsComponent->SetPosition(position);
     }
 
     SetRotation(m_transform.rotation + rotate * dt);
