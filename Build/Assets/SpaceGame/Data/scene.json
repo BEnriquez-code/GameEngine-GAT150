@@ -41,12 +41,14 @@
                         {
                             "name": "idle",
                             "texture_frames": "Animations/hero_idle.json",
-                            "frames_per_second": 10
+                            "frames_per_second": 10.0
+
                         },
                         {
                             "name": "run",
                             "texture_frames": "Animations/hero_run.json",
-                            "frames_per_second": 10
+                            "frames_per_second": 10.0
+
                         }
                     ]
                 },
@@ -87,13 +89,14 @@
                         {
                             "name": "idle",
                             "texture_frames": "Animations/enemy_idle.json",
-                            "frames_per_second": 10,
+                            "frames_per_second": 10.0,
+
                             "loop": true
                         },
                         {
                             "name": "run",
                             "texture_frames": "Animations/enemy_run.json",
-                            "frames_per_second": 10,
+                            "frames_per_second": 10.0,
                             "loop": true
                         }
                     ]

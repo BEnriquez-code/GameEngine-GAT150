@@ -60,13 +60,7 @@
     <ClInclude Include="Components\SpriteRendererComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="ColliderComponent.h">
-      <Filter>Components</Filter>
-    </ClInclude>
     <ClInclude Include="Components\CircleColliderComponent.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Component.h">
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Actor.h">
@@ -177,6 +171,28 @@
     <ClInclude Include="Components\TilemapRendererComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+    <ClInclude Include="Components\SpriteAnimatorRendererComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Component.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\ColliderComponent.h">
+=======
+    <ClInclude Include="Components\Component.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\SpriteAnimatorRendererComponent.h">
+>>>>>>> Stashed changes
+      <Filter>Components</Filter>
+    </ClInclude>
+=======
+    <ClInclude Include="Components\SpriteAnimatorRendererComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -263,8 +279,20 @@
     <ClCompile Include="Components\TilemapRendererComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="Components\SpriteAnimatorRendererComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+    <ClCompile Include="Components\ColliderComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+=======
+=======
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Build\Assets\Animations\bat_idle.json" />
+>>>>>>> Stashed changes
   </ItemGroup>
 </Project>

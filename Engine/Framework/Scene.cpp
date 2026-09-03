@@ -2,7 +2,7 @@
 #include "Scene.h"
 #include "Actor.h"
 #include "Core/Factory.h"
-#include <ColliderComponent.h>
+#include "Components/ColliderComponent.h"
 
 
 namespace nu {
@@ -60,7 +60,7 @@ namespace nu {
 		for (auto& actor : m_actors) {
 			actor->Update(dt);
 		}
-		//UpdateCollisions();
+		UpdateCollisions();
 		//remove destroyed actors
 		for (auto& actor : m_actors) {
 			if (actor->m_destroyed) actor->OnDestroy();

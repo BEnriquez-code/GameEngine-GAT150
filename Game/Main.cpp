@@ -4,10 +4,9 @@
 #include "SpaceGame/Assets.h"
 #include "SpaceGame/Bullet.h"
 #include "SpaceGame/SpaceGame.h"
+#include "SpriteGame/SpriteGame.h"
 #include "Serialization/Json.h"
 #include <fmod.hpp>
-
-#include "SpriteGame/SpriteGame.h"
 
 #include "SDL3/SDL.h"   
 #include <iostream>
