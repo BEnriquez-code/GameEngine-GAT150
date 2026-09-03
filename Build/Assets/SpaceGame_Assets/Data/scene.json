@@ -60,8 +60,9 @@
                     "linear_damping": 2.0,
                     "angular_damping": 1.0,
                     "size": [ 48, 48 ],
-                    "shape": "capsule",
-                    "gravity_scale": 1.0
+                    "shape": "circle",
+                    "contrain_angle": true,
+                    "gravity_scale": 0.0
                 },
                 {
                     "type": "CircleColliderComponent",
@@ -107,7 +108,8 @@
                     "linear_damping": 2.0,
                     "angular_damping": 1.0,
                     "size": [ 48, 48 ],
-                    "gravity_scale": 0.0
+                    "gravity_scale": 0.0,
+                    "shape": "circle"
                 },
                 {
                     "type": "CircleColliderComponent",

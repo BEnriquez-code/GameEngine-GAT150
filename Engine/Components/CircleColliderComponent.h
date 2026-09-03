@@ -1,5 +1,5 @@
 #pragma once
-#include "../ColliderComponent.h"
+#include "Components/ColliderComponent.h"
 
 namespace nu {
 	class CircleColliderComponent : public ColliderComponent {

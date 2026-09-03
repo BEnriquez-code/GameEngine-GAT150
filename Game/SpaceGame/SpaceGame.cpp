@@ -11,7 +11,7 @@
 using namespace nu;
 
 bool SpaceGame::Initialize() {
-	SetWorkingDirectory("SpaceGame");
+	SetWorkingDirectory("SpaceGame_Assets");
 	Game::Initialize();
 	m_scene = std::make_unique<Scene>();
 	m_scene->SetGame(this);
@@ -122,7 +122,7 @@ void SpaceGame::Draw(Renderer& renderer) {
 	case SpaceGame::GameState::StartLevel:
 		break;
 	case SpaceGame::GameState::Game:
-		//renderer.DrawTexture(*m_backgroundTexture, 0.0f, 0.0f,  0.0f, 0.0f, false);
+		renderer.DrawTexture(*m_backgroundTexture, 0.0f, 0.0f,  0.0f, 0.0f, false);
 		m_scene->Draw(renderer);
 		Engine::Get().GetPS().Draw(Engine::Get().GetRenderer());
 

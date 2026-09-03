@@ -36,7 +36,7 @@ void Player::Update(float dt) {
         nu::Vector2 force = forward.Rotate(m_transform.rotation * nu::math::DegToRad) * thrust;
 
         physicsComponent->ApplyForce(force);
-        physicsComponent->ApplyTorque(rotate);
+        //physicsComponent->ApplyTorque(rotate);
 
         nu::Vector2 position = physicsComponent->GetPosition();
         /*position.x = nu::math::Wrap(0.0f, 1200.f, position.x);
@@ -45,7 +45,7 @@ void Player::Update(float dt) {
         //physicsComponent->SetPosition(position);
     }
 
-    SetRotation(m_transform.rotation + rotate * dt);
+    //SetRotation(m_transform.rotation + rotate * dt);
 
 
     if (nu::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_SPACE)) {

@@ -5,6 +5,7 @@
 #include "Math/MathUtils.h"
 #include "Engine.h"
 
+
 namespace nu {
 	FACTORY_REGISTER(Box2DPhysicsComponent)
 
