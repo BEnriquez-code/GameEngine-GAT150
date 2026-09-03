@@ -2,21 +2,44 @@
 #include "SpriteRendererComponent.h"
 #include "Resources/ResourceManager.h"
 #include "Engine.h"
-#include "Framework/Scene.h"
+#include "Core/Factory.h"
 
 #include <iostream>
 
 namespace nu {
 	FACTORY_REGISTER(SpriteRendererComponent)
 
+
+	void SpriteRendererComponent::Start() {
+		if (!m_textureName.empty()) {
+			m_texture = Resources().Get<Texture>(m_textureName, Engine::Get().GetRenderer());
+			if (m_texture) {
+				m_size = m_texture->GetSize();
+			}
+		}
+	}
+
 	void SpriteRendererComponent::Draw(const Renderer& renderer) {
 
 		if (m_texture) {
-			renderer.DrawTexture(*m_texture,
-				GetOwner()->GetTransform().position.x,
-				GetOwner()->GetTransform().position.y,
-				GetOwner()->GetTransform().rotation,
-				GetOwner()->GetTransform().scale);
+			if (m_sourceRect.w > 0 && m_sourceRect.h > 0) {
+				renderer.DrawTexture(*m_texture,
+					m_sourceRect,
+					GetOwner()->GetTransform().position.x,
+					GetOwner()->GetTransform().position.y,
+					GetOwner()->GetTransform().rotation,
+					GetOwner()->GetTransform().scale),
+					m_flipH;
+			}
+			else {
+				renderer.DrawTexture(*m_texture,
+					GetOwner()->GetTransform().position.x,
+					GetOwner()->GetTransform().position.y,
+					GetOwner()->GetTransform().rotation,
+					GetOwner()->GetTransform().scale,
+					GetOwner()->GetTransform().scale),
+					m_flipH;
+			}
 		}	
 	}
 

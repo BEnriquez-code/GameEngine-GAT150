@@ -2,7 +2,7 @@
 #include "Scene.h"
 #include "Actor.h"
 #include "Core/Factory.h"
-#include <ColliderComponent.h>
+#include "Components/ColliderComponent.h"
 
 
 namespace nu {
