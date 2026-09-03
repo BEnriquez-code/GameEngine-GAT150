@@ -55,6 +55,9 @@
     <ClCompile Include="SpaceGame\SpaceGame.cpp">
       <Filter>SpaceGame</Filter>
     </ClCompile>
+    <ClCompile Include="SpriteGame\CharacterBase.cpp">
+      <Filter>SpriteGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SpriteGame\SpriteGame.h">
@@ -80,6 +83,9 @@
     </ClInclude>
     <ClInclude Include="SpaceGame\SpaceGame.h">
       <Filter>SpaceGame</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteGame\CharacterBase.h">
+      <Filter>SpriteGame</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

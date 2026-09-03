@@ -8,7 +8,7 @@
 FACTORY_REGISTER(EnemyController)
 
 void EnemyController::Start() {
-	Actor::Start();
+	CharacterBase::Start();
 	m_physicsComponent = GetComponent<nu::PhysicsComponent>();
 	assert(m_physicsComponent);
 	m_spriteAnimatorRendererComponent = GetComponent<nu::SpriteAnimatorRendererComponent>();
@@ -17,15 +17,24 @@ void EnemyController::Start() {
 
 void EnemyController::Update(float dt) {
 	nu::Vector2 velocity = m_physicsComponent->GetVelocity();
-	velocity.y += 500.0f * dt; // gravity
-	m_physicsComponent->SetVelocity(velocity);
-	if (velocity.x < 0.0f) {
-		m_spriteAnimatorRendererComponent->SetFlipH(true);
+	float dir = 0.0f;
+	auto player = m_scene->FindByTag<Actor>("Player");
+	if (player) {
+		nu::Vector2 position = GetTransform().position;
+		nu::Vector2 playerPosition = player->GetTransform().position;
+
+		if (playerPosition.x < position.x) dir = -1.0f;
+		else dir = 1.0f;
 	}
-	else if (velocity.x > 0.0f) {
-		m_spriteAnimatorRendererComponent->SetFlipH(false);
+
+	if (dir != 0.0f) {
+		velocity.x = dir * 70.0f;
+		m_spriteAnimatorRendererComponent->Play("run");
 	}
-	Actor::Update(dt);
+	else {
+		m_spriteAnimatorRendererComponent->Play("idle");
+	}
+	CharacterBase::Update(dt);
 }
 
 void EnemyController::OnCollision(nu::Actor* other) {
@@ -33,5 +42,5 @@ void EnemyController::OnCollision(nu::Actor* other) {
 }
 
 void EnemyController::Read(const nu::json::value_t& value) {
-	Actor::Read(value);
+	CharacterBase::Read(value);
 }

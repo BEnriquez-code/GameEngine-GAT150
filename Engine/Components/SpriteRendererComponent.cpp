@@ -28,8 +28,8 @@ namespace nu {
 					GetOwner()->GetTransform().position.x,
 					GetOwner()->GetTransform().position.y,
 					GetOwner()->GetTransform().rotation,
-					GetOwner()->GetTransform().scale),
-					m_flipH;
+					GetOwner()->GetTransform().scale,
+					m_flipH);
 			}
 			else {
 				renderer.DrawTexture(*m_texture,
@@ -37,8 +37,7 @@ namespace nu {
 					GetOwner()->GetTransform().position.y,
 					GetOwner()->GetTransform().rotation,
 					GetOwner()->GetTransform().scale,
-					GetOwner()->GetTransform().scale),
-					m_flipH;
+					m_flipH);
 			}
 		}	
 	}

@@ -73,7 +73,7 @@ namespace nu
 		SDL_RenderRect(m_renderer, &ret);
     }
 
-
+        
     void Renderer::DrawTexture(const Texture& texture, float x, float y, float angle, float scale, bool flipH) const{
 
         if (!texture.m_texture) {

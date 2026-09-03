@@ -1,12 +1,12 @@
 #pragma once
-#include "Framework/Actor.h"
+#include "CharacterBase.h"
 
 namespace nu {
 	class PhysicsComponent;
 	class SpriteAnimatorRendererComponent;
 }
 
-class EnemyController : public nu::Actor {
+class EnemyController : public CharacterBase {
 public:
 	CLASS_PROTOTYPE(EnemyController)
 

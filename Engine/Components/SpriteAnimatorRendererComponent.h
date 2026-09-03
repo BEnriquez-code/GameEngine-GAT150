@@ -20,6 +20,7 @@ namespace nu {
 		void Play(const std::string& name);
 		bool GetPause() const { return m_pause; }
 		void SetPause(bool pause = true) { m_pause = pause; }
+		bool IsAnimationFinished() const { return m_finished; }
 
 		void Read(const json::value_t& value) override;
 	private:
@@ -27,6 +28,7 @@ namespace nu {
 		float m_frameTimer = 0;
 		bool m_pause = false;
 		std::string m_defaultAnimationName;
+		bool m_finished = false;
 
 		SpriteAnimation m_spriteAnimation;
 		std::map<std::string, SpriteAnimation> m_spriteAnimations;

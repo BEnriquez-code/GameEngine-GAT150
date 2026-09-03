@@ -52,6 +52,12 @@
                             "name": "jump",
                             "texture_frames": "Animations/hero_jump.json",
                             "frames_per_second": 10.0
+                        },
+                        {
+                            "name": "attack",
+                            "texture_frames": "Animations/hero_attack.json",
+                            "frames_per_second": 10.0,
+                            "loop": false
                         }
                     ]
                 },
@@ -73,7 +79,7 @@
         {
             "name": "EnemyPrototype",
             "tag": "Enemy",
-            "type": "Enemy",
+            "type": "EnemyController",
             "prototype": true,
             "active": true,
             "damping": 300.0,

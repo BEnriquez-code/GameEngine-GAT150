@@ -35,6 +35,9 @@ namespace nu {
 			}
 			else {
 				m_frame = math::Clamp(0u, m_spriteAnimation.textureFrames->GetTotalFrames() - 1, m_frame);
+				if (m_frame == m_spriteAnimation.textureFrames->GetTotalFrames() - 1) {
+					m_finished = true;
+				}
 			}
 		}
 		m_sourceRect = m_spriteAnimation.textureFrames->GetFrameRect(m_frame);
@@ -51,12 +54,13 @@ namespace nu {
 
 		m_frame = 0;
 		m_frameTimer = 0.0f;
-
+		m_finished = false;
 		m_texture = m_spriteAnimation.textureFrames->GetTexture();
 		m_sourceRect = m_spriteAnimation.textureFrames->GetFrameRect(m_frame);
 	}
 
-	void nu::SpriteAnimatorRendererComponent::Read(const json::value_t& value) {
+	
+void nu::SpriteAnimatorRendererComponent::Read(const json::value_t& value) {
 		SpriteRendererComponent::Read(value);
 
 		JSON_READ_NAME(value, "default_animation", m_defaultAnimationName);
