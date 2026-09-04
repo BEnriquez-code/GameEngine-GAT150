@@ -24,6 +24,8 @@
             "tag": "Player",
             "type": "PlayerController",
             "prototype": true,
+            "persistent": true,
+            "health": 100,
             "active": true,
             "damping": 2.0,
             "speed": 250.0,
@@ -73,13 +75,18 @@
                 {
                     "type": "CircleColliderComponent",
                     "radius": 64.0
+                },
+                {
+                    "type": "PlatformGravityComponent",
+                    "gravity_strength": 1000.0,
+                    "level_tag": "Ground"
                 }
             ]
         },
         {
             "name": "EnemyPrototype",
             "tag": "Enemy",
-            "type": "Enemy",
+            "type": "EnemyController",
             "prototype": true,
             "active": true,
             "damping": 300.0,
@@ -121,6 +128,11 @@
                 {
                     "type": "CircleColliderComponent",
                     "radius": 64.0
+                },
+                {
+                    "type": "PlatformGravityComponent",
+                    "gravity_strength": 1000.0,
+                    "level_tag": "Ground"
                 }
             ]
         },

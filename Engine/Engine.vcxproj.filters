@@ -180,6 +180,9 @@
     <ClInclude Include="Components\SpriteAnimatorRendererComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="Components\PlatformGravityComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -267,6 +270,9 @@
       <Filter>Components</Filter>
     </ClCompile>
     <ClCompile Include="Components\SpriteAnimatorRendererComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\PlatformGravityComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>

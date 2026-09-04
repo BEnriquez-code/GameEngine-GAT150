@@ -181,6 +181,7 @@
     <ClInclude Include="Components\ColliderComponent.h" />
     <ClInclude Include="Components\Component.h" />
     <ClInclude Include="Components\PhysicsComponent.h" />
+    <ClInclude Include="Components\PlatformGravityComponent.h" />
     <ClInclude Include="Components\RendererComponent.h" />
     <ClInclude Include="Components\RigidBodyPhysicsComponent.h" />
     <ClInclude Include="Components\SpriteAnimationRendererComponent.h" />
@@ -226,6 +227,7 @@
     <ClCompile Include="Components\Box2DPhysicsComponent.cpp" />
     <ClCompile Include="Components\CircleColliderComponent.cpp" />
     <ClCompile Include="Components\PhysicsComponent.cpp" />
+    <ClCompile Include="Components\PlatformGravityComponent.cpp" />
     <ClCompile Include="Components\RigidBodyPhysicsComponent.cpp" />
     <ClCompile Include="Components\SpriteAnimationRendererComponent.cpp" />
     <ClCompile Include="Components\SpriteAnimatorRendererComponent.cpp" />

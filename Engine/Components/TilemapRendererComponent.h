@@ -1,6 +1,7 @@
 #pragma once
 #include "RendererComponent.h"
 #include "Resources/ResourceManager.h"
+#include "Renderer/Tilemap.h"
 
 namespace nu {
 	class TilemapRendererComponent : public RendererComponent {

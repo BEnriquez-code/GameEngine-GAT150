@@ -53,6 +53,7 @@ namespace nu {
 							m_gravityZones.push_back(zone);
 						}
 					}
+					continue;
 				}
 				Layer layer;
 
