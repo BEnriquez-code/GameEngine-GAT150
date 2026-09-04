@@ -60,7 +60,7 @@ namespace nu {
 		for (auto& actor : m_actors) {
 			actor->Update(dt);
 		}
-		//UpdateCollisions();
+		UpdateCollisions();
 		//remove destroyed actors
 		for (auto& actor : m_actors) {
 			if (actor->m_destroyed) actor->OnDestroy();

@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "CircleColliderComponent.h"
+#include "Components/CircleColliderComponent.h"
 #include "Core/Factory.h"
 #include "Framework/Actor.h"
 

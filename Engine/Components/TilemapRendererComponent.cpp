@@ -47,10 +47,8 @@ namespace nu {
 				// set position from owner transform position + tile position * owner transform scale 
 				transform.position = GetOwner()->GetTransform().position + (m_tilemap->GetTilePosition(layer, i) * transform.scale);
 
-
 				// size of physics body is tehe source rect 
 				Vector2 size{ sourceRect.w, sourceRect.h };
-
 
 
 				// create physics body and add to physics bodies container 

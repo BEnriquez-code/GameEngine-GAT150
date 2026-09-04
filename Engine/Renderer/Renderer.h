@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Math/Vector2.h"
 #include <SDL3/SDL.h>
 #include <SDL3_ttf/SDL_ttf.h>
 #include <SDL3_image/SDL_image.h>
@@ -32,6 +33,8 @@ namespace nu
         int GetWidth() const { return m_width; }
         int GetHeight() const { return m_height; }
 
+        void SetCamera(const Vector2& camera) {m_camera = camera;}
+		void SetCameraEnabled(bool enabled = true) { m_cameraEnabled = enabled; }
 
         friend class Text;
 		friend class Texture;
@@ -39,6 +42,9 @@ namespace nu
     private:
         SDL_Window* m_window = nullptr;
         SDL_Renderer* m_renderer = nullptr;
+
+		bool m_cameraEnabled = true;
+		Vector2 m_camera;
 
         int m_width = 0;
         int m_height = 0;

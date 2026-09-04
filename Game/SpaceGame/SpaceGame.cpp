@@ -109,6 +109,7 @@ void SpaceGame::Update(float dt)
 }
 
 void SpaceGame::Draw(Renderer& renderer) {
+	renderer.SetCameraEnabled(false);
 	m_scene->Draw(renderer);
 
 	switch (m_gameState) {
@@ -141,6 +142,8 @@ void SpaceGame::Draw(Renderer& renderer) {
 	default:
 		break;
 	}
+	renderer.SetCameraEnabled();
+	Game::Draw(renderer);
 }
 
 float SpaceGame::PointToLineSegDistance(const nu::Vector2& A, const nu::Vector2& B, const nu::Vector2& C) {
