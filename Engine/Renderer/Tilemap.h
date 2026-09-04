@@ -17,8 +17,8 @@ namespace nu {
 		};
 
 		struct GravityZone {
-			Rect rect;
-			Vector2 gravityDirection;
+			Rect bounds;
+			Vector2 direction;
 		};
 
 		bool Load(const std::string& filename, class Renderer& renderer);

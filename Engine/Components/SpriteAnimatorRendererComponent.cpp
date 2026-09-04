@@ -9,38 +9,24 @@
 namespace nu {
 	FACTORY_REGISTER(SpriteAnimatorRendererComponent)
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 	void nu::SpriteAnimatorRendererComponent::Start() {
-=======
-		void nu::SpriteAnimatorRendererComponent::Start() {
->>>>>>> Stashed changes
-=======
-		void nu::SpriteAnimatorRendererComponent::Start() {
->>>>>>> Stashed changes
-		if (!m_defaultAnimationName.empty()) {
-			Play(m_defaultAnimationName);
-		}
-		else {
-			auto iter = m_spriteAnimations.begin();
-			std::string name = iter->first;
-			Play(name);
-		}
+		
+			if (!m_defaultAnimationName.empty()) {
+				Play(m_defaultAnimationName);
+			}
+			else {
+				auto iter = m_spriteAnimations.begin();
+				std::string name = iter->first;
+				Play(name);
+			}
 	}
 
 	void nu::SpriteAnimatorRendererComponent::Update(float dt) {
 		if (!m_spriteAnimation.textureFrames)return;
 
 		m_frameTimer += dt;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-		float frameTime = 0.1f / m_spriteAnimation.framesPerSecond;
-=======
 		float frameTime = 1.0f / m_spriteAnimation.framesPerSecond;
->>>>>>> Stashed changes
-=======
-		float frameTime = 1.0f / m_spriteAnimation.framesPerSecond;
->>>>>>> Stashed changes
+
 
 		while (m_frameTimer >= frameTime) {
 			m_frameTimer -= frameTime;
@@ -56,15 +42,9 @@ namespace nu {
 		m_sourceRect = m_spriteAnimation.textureFrames->GetFrameRect(m_frame);
 	}
 
-	void nu::SpriteAnimatorRendererComponent::Play(const std::string& name) {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+	void nu::SpriteAnimatorRendererComponent::Play(const std::string & name) {
 		if (EqualsIgnoreCase(name, m_spriteAnimation.name)) return;
 
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 		auto iter = m_spriteAnimations.find(name);
 		if (iter == m_spriteAnimations.end()) {
 			std::cerr << "Could not find animation " << name << std::endl;
@@ -114,13 +94,6 @@ namespace nu {
 			}
 		}
 
+
 	}
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes
-=======
-}
->>>>>>> Stashed changes

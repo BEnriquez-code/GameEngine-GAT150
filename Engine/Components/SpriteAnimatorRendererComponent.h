@@ -4,53 +4,25 @@
 
 namespace nu {
 	class SpriteAnimatorRendererComponent : public SpriteRendererComponent {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-	
-=======
 
->>>>>>> Stashed changes
 	public:
 		CLASS_PROTOTYPE(SpriteAnimatorRendererComponent)
 
 		struct SpriteAnimation {
-<<<<<<< Updated upstream
-=======
-
-	public:
-		CLASS_PROTOTYPE(SpriteAnimatorRendererComponent)
-
-			struct SpriteAnimation {
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 			std::string name;
 			float framesPerSecond{ 10.0f };
 			bool loop = true;
 			res_t<class TextureFrames> textureFrames;
 		};
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-		
-=======
-
->>>>>>> Stashed changes
-=======
-
->>>>>>> Stashed changes
 
 		void Start() override;
 		void Update(float dt) override;
 
 		void Play(const std::string& name);
 		bool GetPause() const { return m_pause; }
-<<<<<<< Updated upstream
-		void SetPuse(bool pause = true) { m_pause = pause; }
-=======
-		void SetPause(bool pause = true) { m_pause = pause; }
->>>>>>> Stashed changes
 
+		void SetPause(bool pause = true) { m_pause = pause; }
 		void Read(const json::value_t& value) override;
 
 	private:

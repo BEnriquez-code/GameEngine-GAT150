@@ -22,7 +22,7 @@
         {
             "name": "PlayerPrototype",
             "tag": "Player",
-            "type": "Player",
+            "type": "PlayerController",
             "prototype": true,
             "active": true,
             "damping": 2.0,
@@ -59,11 +59,13 @@
                     "size": [ 48, 48 ],
                     "shape": "capsule",
                     "constrain_angle": true,
-                    "gravity_scale": 0
+                    "gravity_scale": 0.0
                 },
                 {
-                    "type": "CircleColliderComponent",
-                    "radius": 64.0
+                    "type": "PlatformGravityComponent",
+                    "gravity_strength": 600.0,
+                    "level_tag": "Ground"
+
                 }
             ]
         },
@@ -109,8 +111,10 @@
                     "gravity_scale": 0
                 },
                 {
-                    "type": "CircleColliderComponent",
-                    "radius": 64.0
+                    "type": "PlatformGravityComponent",
+                    "gravity_strength": 600.0,
+                    "level_tag": "Ground"
+
                 }
             ]
         },
