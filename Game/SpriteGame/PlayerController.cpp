@@ -30,7 +30,7 @@ void PlayerController::Update(float dt) {
 
 
 			if (nu::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_SPACE)) {
-				velocity.y = -300.0f;
+				velocity.y = -500.0f;
 			}
 
 

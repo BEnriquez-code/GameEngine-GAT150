@@ -47,7 +47,7 @@ namespace nu {
 										else if (EqualsIgnoreCase(value, "down"))  zone.direction = Vector2{ 0.0f,  1.0f };
 										else if (EqualsIgnoreCase(value, "left"))  zone.direction = Vector2{ -1.0f, 0.0f };
 										else if (EqualsIgnoreCase(value, "right")) zone.direction = Vector2{ 1.0f, 0.0f };
-									}
+									} 
 								}
 							}
 							m_gravityZones.push_back(zone);

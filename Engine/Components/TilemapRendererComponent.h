@@ -18,7 +18,7 @@ namespace nu {
 
 		void Read(const json::value_t& value)override;
 
-		Vector2 GetNearestTilePosition(const Vector2& wordlPos);
+		Vector2 GetNearestTilePosition(const Vector2& wordlPos) const;
 	private:
 		std::string m_tilemapName;
 		res_t<class Tilemap> m_tilemap;

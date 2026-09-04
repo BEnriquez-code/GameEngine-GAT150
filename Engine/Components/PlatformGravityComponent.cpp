@@ -7,6 +7,7 @@
 #include "Math/MathUtils.h"
 #include "Framework/Scene.h"
 
+#include <iostream>
 
 namespace nu {
 	FACTORY_REGISTER(PlatformGravityComponent)
@@ -25,7 +26,7 @@ namespace nu {
 	void PlatformGravityComponent::Update(float dt) {
 		Vector2 pos = m_physicsComponent->GetPosition();
 		Vector2 dir = m_gravitySource->GetNearestTilePosition(pos);
-
+		std::cerr << "player pos(" << pos.x << "," << pos.y << ") -> dir(" << dir.x << "," << dir.y << ")" << std::endl;
 
 		m_physicsComponent->ApplyForce(dir * m_gravityStrength);
 		float targetAngle = std::atan2(dir.y, dir.x) - (math::PI / 2.0f);
@@ -34,7 +35,7 @@ namespace nu {
 
 	void PlatformGravityComponent::Read(const json::value_t& value) {
 		Component::Read(value);
-		JSON_READ_OPTIONAL(value, "gravity_strength", m_gravityStrength);
-		JSON_READ_OPTIONAL(value, "level_tag", m_levelTag);
+		JSON_READ_NAME(value, "gravity_strength", m_gravityStrength);
+		JSON_READ_NAME(value, "level_tag", m_levelTag);
 	}
 }

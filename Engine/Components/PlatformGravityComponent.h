@@ -15,7 +15,7 @@ namespace nu {
 	private:
 		PhysicsComponent* m_physicsComponent = nullptr;
 		TilemapRendererComponent* m_gravitySource = nullptr;
-		float m_gravityStrength = 600.0f;
+		float m_gravityStrength = 0.0f;
 		std::string m_levelTag{ "Level" };
 	};
 }

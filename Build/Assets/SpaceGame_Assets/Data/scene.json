@@ -31,7 +31,7 @@
             "speed": 250.0,
             "velocity": [ 0.0, 0.0 ],
             "transform": {
-                "position": [ 640.0, 512.0 ],
+                "position": [ 960.0, 485.0 ],
                 "rotation": 0.0,
                 "scale": 3.0
             },
@@ -69,16 +69,12 @@
                     "angular_damping": 1.0,
                     "size": [ 48, 48 ],
                     "shape": "circle",
-                    "contrain_angle": false,
+                    "contrain_angle": true,
                     "gravity_scale": 1.0
                 },
                 {
-                    "type": "CircleColliderComponent",
-                    "radius": 64.0
-                },
-                {
                     "type": "PlatformGravityComponent",
-                    "gravity_strength": 1000.0,
+                    "gravity_strength": 900.0,
                     "level_tag": "Ground"
                 }
             ]
@@ -95,7 +91,7 @@
             "transform": {
                 "position": [ 0.0, 0.0 ],
                 "rotation": 0.0,
-                "scale": 1.0
+                "scale": 2.0
             },
             "components": [
                 {
@@ -131,7 +127,7 @@
                 },
                 {
                     "type": "PlatformGravityComponent",
-                    "gravity_strength": 1000.0,
+                    "gravity_strength": 700.0,
                     "level_tag": "Ground"
                 }
             ]
