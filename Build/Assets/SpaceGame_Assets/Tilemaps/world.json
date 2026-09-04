@@ -1,4 +1,5 @@
-{ "compressionlevel":-1,
+{ 
+ "compressionlevel":-1,
  "editorsettings":
     {
      "export":
@@ -51,9 +52,33 @@
          "width":30,
          "x":0,
          "y":0
-        }],
- "nextlayerid":2,
- "nextobjectid":1,
+        },
+        {
+         "id": 2,
+         "name": "GravityZones",
+         "type": "objectgroup",
+         "visible": true,
+         "opacity": 1,
+         "x": 0,
+         "y": 0,
+         "objects": [
+             { "id": 1, "x": 432.0,  "y": 96.0,  "width": 288.0, "height": 240.0,
+               "properties": [{ "name": "gravity_dir", "type": "string", "value": "down" }] },
+             { "id": 2, "x": 1104.0, "y": 240.0, "width": 240.0, "height": 240.0,
+               "properties": [{ "name": "gravity_dir", "type": "string", "value": "down" }] },
+             { "id": 3, "x": 0.0,    "y": 528.0, "width": 336.0, "height": 192.0,
+               "properties": [{ "name": "gravity_dir", "type": "string", "value": "down" }] },
+             { "id": 4, "x": 864.0,  "y": 576.0, "width": 192.0, "height": 96.0,
+               "properties": [{ "name": "gravity_dir", "type": "string", "value": "left" }] },
+             { "id": 5, "x": 384.0,  "y": 768.0, "width": 384.0, "height": 144.0,
+               "properties": [{ "name": "gravity_dir", "type": "string", "value": "down" }] },
+             { "id": 6, "x": 1104.0, "y": 720.0, "width": 288.0, "height": 192.0,
+               "properties": [{ "name": "gravity_dir", "type": "string", "value": "down" }] }
+            ]
+        }
+ ],
+ "nextlayerid":3,
+ "nextobjectid":7,
  "orientation":"orthogonal",
  "properties":[
         {
