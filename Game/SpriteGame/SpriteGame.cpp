@@ -1,6 +1,5 @@
 #include "SpriteGame.h"
 #include "Engine.h"
-#include "../Game/SpaceGame/Player.h"
 
 #include <algorithm>	
 #include <vector>
@@ -9,7 +8,7 @@
 using namespace nu;
 
 bool SpriteGame::Initialize() {
-	SetWorkingDirectory("SpriteGame_Assets");
+	SetWorkingDirectory("SpriteGame");
 	Game::Initialize();
 	m_scene = std::make_unique<Scene>();
 	m_scene->SetGame(this);
@@ -53,56 +52,58 @@ bool SpriteGame::Initialize() {
 
 
 void SpriteGame::Update(float dt){
-	switch (m_gameState) {
-	case GameState::Title:
-		if (Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_SPACE)) {
-			m_gameState = GameState::StartGame;
-		}
-		break;
-	case GameState::StartGame:
-		m_score = 0;
-		m_lives = 5;
-		m_spawnTime = 5.0f;
-		m_gameState = GameState::StartLevel;
-		break;
-	case GameState::StartLevel:
-		m_scene->RemoveAllActors();
-		SpawnPlayer();
-		m_gameState = GameState::Game;
+	//switch (m_gameState) {
+	//case GameState::Title:
+	//	if (Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_SPACE)) {
+	//		m_gameState = GameState::StartGame;
+	//	}
+	//	break;
+	//case GameState::StartGame:
+	//	m_score = 0;
+	//	m_lives = 5;
+	//	m_spawnTime = 5.0f;
+	//	m_gameState = GameState::StartLevel;
+	//	break;
+	//case GameState::StartLevel:
+	//	m_scene->RemoveAllActors();
+	//	SpawnPlayer();
+	//	m_gameState = GameState::Game;
 
-		break;
-	case GameState::Game:
-		if (m_killstreak > 0) {
-			m_killstreakTimer += dt;
-			if (m_killstreakTimer > m_killstreakWindow) {
-				m_killstreak = 0;
-			}
-		}
+	//	break;
+	//case GameState::Game:
+	//	if (m_killstreak > 0) {
+	//		m_killstreakTimer += dt;
+	//		if (m_killstreakTimer > m_killstreakWindow) {
+	//			m_killstreak = 0;
+	//		}
+	//	}
 
-		m_spawnTimer -= dt;
-		if (m_spawnTimer <= 0.0f) {
-			m_spawnTimer = m_spawnTime;
-			SpawnEnemy();
-		}
+	//	m_spawnTimer -= dt;
+	//	if (m_spawnTimer <= 0.0f) {
+	//		m_spawnTimer = m_spawnTime;
+	//		SpawnEnemy();
+	//	}
 
-		if (m_scene->FindByTag<Player>("Player") == nullptr) {
-			OnPlayerDead();
-		}
-		
+	//	/*if (m_scene->FindByTag<Player>("Player") == nullptr) {
+	//		OnPlayerDead();
+	//	}*/
 
-		break;
-	case GameState::GameOver:
-		break;
+	//	break;
+	//case GameState::GameOver:
+	//	break;
 
-	default:
-		break;
-	}
+	//default:
+	//	break;
+	//}
 
-	m_scene->Update(dt);
+	//m_scene->Update(dt);
+
 }
 
 void SpriteGame::Draw(Renderer& renderer) {
-	m_scene->Draw(renderer);
+
+	
+	/*m_scene->Draw(renderer);
 
 	switch (m_gameState) {
 
@@ -133,18 +134,21 @@ void SpriteGame::Draw(Renderer& renderer) {
 		break;
 	default:
 		break;
-	}
+	}*/
+
+	
+	
 }
 
 
 
 void SpriteGame::OnPlayerDead() {
-	m_lives--;
-	m_gameState = (m_lives == 0) ? GameState::GameOver : GameState::StartLevel;
+	/*m_lives--;
+	m_gameState = (m_lives == 0) ? GameState::GameOver : GameState::StartLevel;*/
 }
 
 void SpriteGame::AddKillStreakPoints(int basePoints) {
-	if (m_killstreakTimer <= m_killstreakWindow) {
+	/*if (m_killstreakTimer <= m_killstreakWindow) {
 		m_killstreak++;
 	}
 	else {
@@ -156,20 +160,21 @@ void SpriteGame::AddKillStreakPoints(int basePoints) {
 	float multiplier = std::pow(1.5f, static_cast<float>(m_killstreak - 1));
 	int pointsEarned = static_cast<int>(basePoints * multiplier);
 
-	m_score += pointsEarned;
+	m_score += pointsEarned;*/
 
 }
 
 void SpriteGame::SpawnPlayer() {
-	auto player = Factory::Instance().Create<Actor>("PlayerPrototype");
-	m_scene->AddActor(std::move(player));
+	/*auto player = Factory::Instance().Create<Actor>("PlayerPrototype");
+	m_scene->AddActor(std::move(player));*/
 }
 
 void SpriteGame::SpawnEnemy() {
-	auto enemy = Factory::Instance().Create<Actor>("EnemyPrototype");
-	m_scene->AddActor(std::move(enemy));
+	/*auto enemy = Factory::Instance().Create<Actor>("EnemyPrototype");
+	m_scene->AddActor(std::move(enemy));*/
 }
 
 void SpriteGame::Shutdown() {
-	m_scene = nullptr;
+	/*m_scene.release();
+	m_scene = nullptr;*/
 }

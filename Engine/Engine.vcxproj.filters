@@ -171,18 +171,28 @@
     <ClInclude Include="Components\TilemapRendererComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="Components\ColliderComponent.h">
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+    <ClInclude Include="Components\SpriteAnimatorRendererComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="Components\Component.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="Components\ColliderComponent.h">
+=======
+    <ClInclude Include="Components\Component.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\SpriteAnimatorRendererComponent.h">
+>>>>>>> Stashed changes
+      <Filter>Components</Filter>
+    </ClInclude>
+=======
     <ClInclude Include="Components\SpriteAnimatorRendererComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="Components\PlatformGravityComponent.h">
-      <Filter>Components</Filter>
-    </ClInclude>
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -272,11 +282,17 @@
     <ClCompile Include="Components\SpriteAnimatorRendererComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="Components\PlatformGravityComponent.cpp">
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+    <ClCompile Include="Components\ColliderComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+=======
+=======
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Build\Assets\Animations\bat_idle.json" />
+>>>>>>> Stashed changes
   </ItemGroup>
 </Project>

@@ -9,7 +9,15 @@
 namespace nu {
 	FACTORY_REGISTER(SpriteAnimatorRendererComponent)
 
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	void nu::SpriteAnimatorRendererComponent::Start() {
+=======
+		void nu::SpriteAnimatorRendererComponent::Start() {
+>>>>>>> Stashed changes
+=======
+		void nu::SpriteAnimatorRendererComponent::Start() {
+>>>>>>> Stashed changes
 		if (!m_defaultAnimationName.empty()) {
 			Play(m_defaultAnimationName);
 		}
@@ -24,7 +32,15 @@ namespace nu {
 		if (!m_spriteAnimation.textureFrames)return;
 
 		m_frameTimer += dt;
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+		float frameTime = 0.1f / m_spriteAnimation.framesPerSecond;
+=======
 		float frameTime = 1.0f / m_spriteAnimation.framesPerSecond;
+>>>>>>> Stashed changes
+=======
+		float frameTime = 1.0f / m_spriteAnimation.framesPerSecond;
+>>>>>>> Stashed changes
 
 		while (m_frameTimer >= frameTime) {
 			m_frameTimer -= frameTime;
@@ -35,15 +51,20 @@ namespace nu {
 			}
 			else {
 				m_frame = math::Clamp(0u, m_spriteAnimation.textureFrames->GetTotalFrames() - 1, m_frame);
-				if (m_frame == m_spriteAnimation.textureFrames->GetTotalFrames() - 1) {
-					m_finished = true;
-				}
 			}
 		}
 		m_sourceRect = m_spriteAnimation.textureFrames->GetFrameRect(m_frame);
 	}
 
 	void nu::SpriteAnimatorRendererComponent::Play(const std::string& name) {
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+		if (EqualsIgnoreCase(name, m_spriteAnimation.name)) return;
+
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 		auto iter = m_spriteAnimations.find(name);
 		if (iter == m_spriteAnimations.end()) {
 			std::cerr << "Could not find animation " << name << std::endl;
@@ -54,13 +75,12 @@ namespace nu {
 
 		m_frame = 0;
 		m_frameTimer = 0.0f;
-		m_finished = false;
+
 		m_texture = m_spriteAnimation.textureFrames->GetTexture();
 		m_sourceRect = m_spriteAnimation.textureFrames->GetFrameRect(m_frame);
 	}
 
-	
-void nu::SpriteAnimatorRendererComponent::Read(const json::value_t& value) {
+	void nu::SpriteAnimatorRendererComponent::Read(const json::value_t& value) {
 		SpriteRendererComponent::Read(value);
 
 		JSON_READ_NAME(value, "default_animation", m_defaultAnimationName);
@@ -93,5 +113,14 @@ void nu::SpriteAnimatorRendererComponent::Read(const json::value_t& value) {
 				m_spriteAnimations[ToLower(spriteAnimation.name)] = spriteAnimation;
 			}
 		}
+
 	}
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
+=======
+}
+>>>>>>> Stashed changes

@@ -4,7 +4,6 @@
 #include "Renderer/Tilemap.h"
 #include "Physics/PhysicsBody.h"
 #include "Engine.h"
-#include <iostream>
 
 namespace nu {
 	FACTORY_REGISTER(TilemapRendererComponent)
@@ -57,26 +56,6 @@ namespace nu {
 				m_physicsBodies.push_back(std::move(physicsBody));
 			}
 		}
-
-		Transform ownerTransform = GetOwner()->GetTransform();
-		for (const auto& zone : m_tilemap->GetGravityZones()){
-			Tilemap::GravityZone worldZone;
-			worldZone.bounds = Rect{
-				ownerTransform.position.x + zone.bounds.x,
-				ownerTransform.position.y + zone.bounds.y,
-				zone.bounds.w,
-				zone.bounds.h
-			};
-			worldZone.direction = zone.direction;
-			m_gravityZones.push_back(worldZone);
-		}
-
-		std::cerr << "Baked " << m_gravityZones.size() << " gravity zones:" << std::endl;
-		for (const auto& zone : m_gravityZones) {
-			std::cerr << "  bounds(" << zone.bounds.x << "," << zone.bounds.y << ","
-				<< zone.bounds.w << "," << zone.bounds.h << ") dir("
-				<< zone.direction.x << "," << zone.direction.y << ")" << std::endl;
-		}
 	}
 
 	void TilemapRendererComponent::Draw(const Renderer& renderer){
@@ -115,53 +94,6 @@ namespace nu {
 		RendererComponent::Read(value);
 
 		JSON_READ_NAME(value, "tilemap_name", m_tilemapName);
-	}
-
-	Vector2 TilemapRendererComponent::GetNearestTilePosition(const Vector2& worldPos) const {
-		float bestDistSq = FLT_MAX;
-		const Tilemap::GravityZone* nearestZone = nullptr;
-
-		for (const auto& zone : m_gravityZones) {
-			float closestX = math::Clamp(zone.bounds.x, zone.bounds.x + zone.bounds.w, worldPos.x);
-			float closestY = math::Clamp(zone.bounds.y, zone.bounds.y + zone.bounds.h, worldPos.y);
-			float dx = worldPos.x - closestX;
-			float dy = worldPos.y - closestY;
-			float distSq = dx * dx + dy * dy;
-			if (distSq < bestDistSq) {
-				bestDistSq = distSq;
-				nearestZone = &zone;
-			}
-		}
-		if (!nearestZone) return Vector2{ 0.0f, 1.0f }; // no zones loaded; default down
-
-		float minX = nearestZone->bounds.x;
-		float maxX = nearestZone->bounds.x + nearestZone->bounds.w;
-		float minY = nearestZone->bounds.y;
-		float maxY = nearestZone->bounds.y + nearestZone->bounds.h;
-
-		float closestX = math::Clamp(minX, maxX, worldPos.x);
-		float closestY = math::Clamp(minY, maxY, worldPos.y);
-		float dx = worldPos.x - closestX;
-		float dy = worldPos.y - closestY;
-
-		if (dx != 0.0f || dy != 0.0f) {
-			// Outside the box: pick the dominant axis so gravity stays axis-aligned
-			if (std::abs(dx) > std::abs(dy))
-				return Vector2{ (dx > 0.0f) ? -1.0f : 1.0f, 0.0f };
-			return Vector2{ 0.0f, (dy > 0.0f) ? -1.0f : 1.0f };
-		}
-
-		// Actor is inside the box (shouldn't normally happen with solid collision) —
-		// fall back to pulling toward whichever edge is nearest
-		float distLeft = worldPos.x - minX;
-		float distRight = maxX - worldPos.x;
-		float distTop = worldPos.y - minY;
-		float distBottom = maxY - worldPos.y;
-		float minDist = std::min({ distLeft, distRight, distTop, distBottom });
-		if (minDist == distLeft)   return Vector2{ -1.0f, 0.0f };
-		if (minDist == distRight)  return Vector2{ 1.0f, 0.0f };
-		if (minDist == distTop)    return Vector2{ 0.0f, -1.0f };
-		return Vector2{ 0.0f, 1.0f };
 	}
 
 }
