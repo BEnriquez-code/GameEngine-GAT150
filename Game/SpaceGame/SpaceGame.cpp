@@ -11,7 +11,7 @@
 using namespace nu;
 
 bool SpaceGame::Initialize() {
-	SetWorkingDirectory("SpaceGame_Assets");
+	SetWorkingDirectory("SpaceGame");
 	Game::Initialize();
 	m_scene = std::make_unique<Scene>();
 	m_scene->SetGame(this);
@@ -190,7 +190,6 @@ void SpaceGame::CheckLineCollisions(const std::vector<Vector2>& mousePoints) {
 void SpaceGame::OnPlayerDead() {
 	m_lives--;
 	m_gameState = (m_lives == 0) ? GameState::GameOver : GameState::StartLevel;
-	std::cout << "Player Dead! Lives left: " << m_lives << std::endl;
 }
 
 void SpaceGame::AddKillStreakPoints(int basePoints) {
