@@ -12,7 +12,7 @@
 namespace nu {
 	FACTORY_REGISTER(PlatformGravityComponent)
 
-	void PlatformGravityComponent::Start() {
+		void PlatformGravityComponent::Start() {
 		m_physicsComponent = GetOwner()->GetComponent<PhysicsComponent>();
 		assert(m_physicsComponent);
 
@@ -26,7 +26,7 @@ namespace nu {
 	void PlatformGravityComponent::Update(float dt) {
 		Vector2 pos = m_physicsComponent->GetPosition();
 		Vector2 dir = m_gravitySource->GetNearestTilePosition(pos);
-		
+
 
 		m_physicsComponent->ApplyForce(dir * m_gravityStrength);
 		float targetAngle = std::atan2(dir.y, dir.x) - (math::PI / 2.0f);

@@ -178,10 +178,7 @@
     <ClInclude Include="Audio\Audio.h" />
     <ClInclude Include="Components\Box2DPhysicsComponent.h" />
     <ClInclude Include="Components\CircleColliderComponent.h" />
-<<<<<<< Updated upstream
     <ClInclude Include="Components\ColliderComponent.h" />
-=======
->>>>>>> Stashed changes
     <ClInclude Include="Components\Component.h" />
     <ClInclude Include="Components\PhysicsComponent.h" />
     <ClInclude Include="Components\RendererComponent.h" />
