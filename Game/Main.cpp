@@ -26,7 +26,7 @@ int main() {
     //Intialization
     Engine::Get().Initialize();
 
-    SpaceGame game;
+    SpriteGame game;
     game.Initialize();
 
     // create texture, using shared_ptr so texture can be shared
@@ -59,7 +59,8 @@ int main() {
 
         Engine::Get().Update();
        
-        game.Update(Engine::Get().GetTime().GetDeltaTime(), mouseLinePoints);
+        //game.Update(Engine::Get().GetTime().GetDeltaTime(), mouseLinePoints);
+        game.Update(Engine::Get().GetTime().GetDeltaTime());
 
         if (Engine::Get().GetInput().GetButtonDown(Input::MouseButton::Left)) {
 			Vector2 v = Engine::Get().GetInput().GetMousePosition();
