@@ -26,7 +26,7 @@ namespace nu {
 	void PlatformGravityComponent::Update(float dt) {
 		Vector2 pos = m_physicsComponent->GetPosition();
 		Vector2 dir = m_gravitySource->GetNearestTilePosition(pos);
-		std::cerr << "player pos(" << pos.x << "," << pos.y << ") -> dir(" << dir.x << "," << dir.y << ")" << std::endl;
+		
 
 		m_physicsComponent->ApplyForce(dir * m_gravityStrength);
 		float targetAngle = std::atan2(dir.y, dir.x) - (math::PI / 2.0f);
